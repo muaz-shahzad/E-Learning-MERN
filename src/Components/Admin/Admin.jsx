@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 
 
 
-function Admin() {
+function Admin({ setadmin1 }) {
 
     const navigate = useNavigate();
 
@@ -30,14 +30,14 @@ function Admin() {
             axios.post("http://localhost:9002/admin", admin)
                 .then(res => {
                     alert(res.data.message)
-                    // setLoginUser(res.data.user)
+                    setadmin1(res.data.user)
                     navigate("/homeadmin")
                 })
         } else {
             alert("Input Fields Must Be Filled")
         }
     }
-   
+
     return (
         <>
             {console.log("Admin", admin)}
@@ -53,7 +53,7 @@ function Admin() {
                 </div>
                 <div className="button-form1 button">
                     <a id="submitadmin" href="#" onClick={Adminlogin}>
-                    Login
+                        Login
                     </a>
                 </div>
             </div>

@@ -12,18 +12,20 @@ import {
 import { useState } from 'react'
 import Admin from './Components/Admin/Admin';
 import HomeAdmin from './Components/HomeAdmin/HomeAdmin';
+import Header from './Components/Client/Header/Header';
+import Home from './Components/Client/Home/Home';
 
 
 
 function App() {
   const [user, setLoginUser] = useState({})
-  const [admin, setadmin] = useState({})
+  const [admin, setadmin1] = useState({})
 
 
 
   return (
     <>
-      <div className='App'>
+      {/* <div className='App'>
         <Routes>
           <Route
             exact
@@ -44,29 +46,18 @@ function App() {
           />
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/register" element={<Register />}></Route>
-         
-          <Route
-            path="/admin"
-            element={
-              admin && admin._id ? (
-                <HomeAdmin
-                  setadmin={setadmin}
-                  Username={admin.name}
-                  Email={admin.email}
-
-
-                />
-              ) : (
-                <Admin setadmin={setadmin} />
-              )
-            }
-          />
-          {/* <Route path="/admin" element={<Admin />}></Route>
-          <Route path="/homeadmin" element={<HomeAdmin />}></Route> */}
-
+          {
+            admin && admin._id ? <Route exact path="/homeadmin" element={<HomeAdmin />}></Route>
+              :
+              <Route path="/admin" element={<Admin setadmin1={setadmin1} />}></Route>
+          }
+          <Route exact path="/homeadmin" element={<HomeAdmin />}></Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-      </div>
+      </div> */}
+
+      <Header/>
+      <Home/>
     </>
   );
 }
