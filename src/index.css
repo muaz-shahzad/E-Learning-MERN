@@ -60,3 +60,31 @@ button.btn {
 i {
   color: #17bf9e;
 }
+
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 2px;
+  height: 12px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #074e53; 
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#17bf9e; 
+  border-radius: 8px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: blue; 
+  width: 10px;
+
+}
+

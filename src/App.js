@@ -14,18 +14,23 @@ import Admin from './Components/Admin/Admin';
 import HomeAdmin from './Components/HomeAdmin/HomeAdmin';
 import Header from './Components/Client/Header/Header';
 import Home from './Components/Client/Home/Home';
+import Head from './Components/Client/Head/Head';
 
-
+import AboutPage from './Components/Pages/AboutPage';
+import Contactus from './Components/Client/ContactUs/Contactus';
+import TeamP from './Components/Client/Team/TeamP';
 
 function App() {
   const [user, setLoginUser] = useState({})
   const [admin, setadmin1] = useState({})
+  // alert(admin)
 
 
 
   return (
     <>
-      {/* <div className='App'>
+
+      <div className='App'>
         <Routes>
           <Route
             exact
@@ -51,13 +56,38 @@ function App() {
               :
               <Route path="/admin" element={<Admin setadmin1={setadmin1} />}></Route>
           }
+          <Route path="/admin" element={<Admin setadmin1={setadmin1} />}></Route>
           <Route exact path="/homeadmin" element={<HomeAdmin />}></Route>
           <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/contact" element={
+            user && user._id ? (
+              <Contactus
+              />
+            ) : (
+              <Navigate replace to="/" />
+            )
+          }
+          />
+          <Route path="/aboutpage" element={
+            user && user._id ? (
+              <AboutPage
+              />
+            ) : (
+              <Navigate replace to="/" />
+            )
+          }
+          />
+          <Route path="/team" element={
+            user && user._id ? (
+              <TeamP
+              />
+            ) : (
+              <Navigate replace to="/" />
+            )
+          }
+          />
         </Routes>
-      </div> */}
-
-      <Header/>
-      <Home/>
+      </div>
     </>
   );
 }

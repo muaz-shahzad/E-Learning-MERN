@@ -2,7 +2,8 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import aboutImg from "../../../assests/images/about-us.png"
 import CountUp from "react-countup";
-import "./Aboutus.css";
+import "../Aboutus/Aboutus.css";
+
 
 const AboutUS = () => {
   return (

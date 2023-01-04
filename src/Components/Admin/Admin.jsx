@@ -30,7 +30,7 @@ function Admin({ setadmin1 }) {
             axios.post("http://localhost:9002/admin", admin)
                 .then(res => {
                     alert(res.data.message)
-                    setadmin1(res.data.user)
+                    setadmin1(res.data.admin)
                     navigate("/homeadmin")
                 })
         } else {

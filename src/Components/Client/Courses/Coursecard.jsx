@@ -1,4 +1,5 @@
 import React from "react";
+import StarIcon from '@mui/icons-material/Star';
 
 const Coursecard = (props) => {
   const { imgUrl, title, lesson, students, rating } = props.item;
@@ -10,7 +11,7 @@ const Coursecard = (props) => {
       </div>
 
       <div className="course__details">
-        <p style={{color: "black",fontWeight: "bold"}} className="course__title mb-4">{title}</p>
+        <p style={{color: "black",fontWeight: "bold",fontSize: "16px"}} className="course__title mb-4">{title}</p>
 
         <div className=" d-flex justify-content-between align-items-center">
           <p className="lesson d-flex align-items-center gap-1">
@@ -24,7 +25,7 @@ const Coursecard = (props) => {
 
         <div className=" d-flex justify-content-between align-items-center">
           <p className="rating d-flex align-items-center gap-1">
-            <i class="ri-star-fill"></i> {rating}K
+            <StarIcon style={{color: "#17bf9e",fontSize: "15px"}}/> {rating}K
           </p>
 
           <p className="enroll d-flex align-items-center gap-1">

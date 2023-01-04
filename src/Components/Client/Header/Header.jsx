@@ -8,7 +8,6 @@ const Header = () => {
 
   return (
     <>
-      <Head />
       <header>
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB "} onClick={() => setClick(false)}>
@@ -16,10 +15,10 @@ const Header = () => {
               <Link to='/'>Home</Link>
             </li>
             <li>
-              <Link to='/courses'>All Courses</Link>
+              <Link to='/courses'>Courses</Link>
             </li>
             <li>
-              <Link to='/about'>About</Link>
+              <Link to='/aboutpage'>About</Link>
             </li>
             <li>
               <Link to='/team'>Team</Link>

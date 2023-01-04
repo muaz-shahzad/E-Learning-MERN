@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 import chooseImg from "../../../assests/images/why-choose-us.png";
-import "./Chooseus.css";
+import "../Chooseus/Chooseus.css";
 
 import ReactPlayer from "react-player";
 
@@ -40,14 +40,7 @@ const Chooseus = () => {
                 <img src={chooseImg} alt="" className="w-100" />
               )}
 
-              {!showVideo && (
-                <span style={{color: "green"}} className="play__icon">
-                  <i style={{color: "green"}} 
-                    className="ri-play-circle-line"
-                    onClick={() => setShowVideo(!showVideo)}
-                  ></i>
-                </span>
-              )}
+              {/*  */}
             </div>
           </Col>
         </Row>

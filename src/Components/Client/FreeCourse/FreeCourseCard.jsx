@@ -1,4 +1,9 @@
 import React from "react";
+import StarIcon from '@mui/icons-material/Star';
+
+import PersonIcon from '@mui/icons-material/Person';
+
+
 
 const FreeCourseCard = (props) => {
   const { imgUrl, title, students, rating } = props.item;
@@ -15,11 +20,11 @@ const FreeCourseCard = (props) => {
 
         <div className=" d-flex align-items-center gap-5">
           <span className=" d-flex align-items-center gap-2">
-            <i class="ri-user-line"></i> {students}k
+           <PersonIcon style={{color: "#17bf9e",fontSize: "20px"}}/> {students}k
           </span>
 
           <span className=" d-flex align-items-center gap-2">
-            <i class="ri-star-fill"></i> {rating}k
+            <StarIcon style={{color: "#17bf9e",fontSize: "20px"}}/>{rating}k
           </span>
         </div>
       </div>

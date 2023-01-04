@@ -1,7 +1,6 @@
 import React from "react"
-import "./Courses.css"
+import "../Courses/Courses.css"
 import { online } from "../../../dummydata"
-import Heading from "./Heading"
 
 const Courses = () => {
     return (

@@ -1,5 +1,6 @@
 import React from "react"
-import "./AboutCard.css"
+import "../AboutCard/AboutCard.css";
+
 import { homeAbout } from "../../../dummydata"
 
 const AboutCard = () => {

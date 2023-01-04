@@ -7,7 +7,7 @@ import courseImg03 from "../../../assests/images//seo.png";
 import courseImg04 from "../../../assests/images//ui-ux.png";
 import FreeCourseCard from "./FreeCourseCard";
 
-import "./FreeCourse.css";
+import "../FreeCourse/FreeCourse.css";
 
 const freeCourseData = [
   {
@@ -27,7 +27,7 @@ const freeCourseData = [
 
   {
     id: "03",
-    title: "Search Engine Optimization - Basic",
+    title: "Search Engine Optimization",
     imgUrl: courseImg03,
     students: 5.3,
     rating: 1.7,

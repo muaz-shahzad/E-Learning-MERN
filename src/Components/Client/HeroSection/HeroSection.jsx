@@ -1,9 +1,7 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import heroImg from "../../../assests/images/hero-img1.png";
-import "./HeroSection.css";
+import "../HeroSection/HeroSection.css";
+
 
 function HeroSection() {
     return (
