@@ -47,7 +47,7 @@ button {
   border: none;
   margin: 30px 10px 0 0;
   border-radius: 3px;
-  cursor: pointer;
+  cursor: pointer !important;
   box-shadow: 0 24px 36px -11px rgb(0 0 0 / 9%);
   transition: 0.5s;
 }
@@ -60,6 +60,8 @@ button:hover {
 .primary-btn {
   background-color: #1eb2a6;
   color: #fff;
+  cursor: pointer !important;
+
 }
 
 /*------------global-----------*/
