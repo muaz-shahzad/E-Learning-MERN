@@ -1,8 +1,16 @@
-import React from 'react'
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import "./login.css"
 import { useState } from 'react'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import AlertDialog from '../Alert/AlertMessage'
+import AlertMessage from '../Alert/AlertMessage'
 
 
 
@@ -23,7 +31,12 @@ function Login({ setLoginUser }) {
             [name]: value
         })
     }
+    const [open, setOpen] = React.useState(false);
 
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     const login = () => {
         const { email, password } = user
         if (email && password) {
@@ -33,22 +46,28 @@ function Login({ setLoginUser }) {
                     setLoginUser(res.data.user)
                     navigate("/")
                 })
+            setUser({
+                email: "",
+                password: ""
+            })
         } else {
-            alert("Input Fields Must Be Filled")
+            // alert("Input Fields Must Be Filled")
+            setOpen(true);
+
         }
     }
-   
+
     return (
         <>
-            {console.log("User", user)}
+            {console.log("User",)}
             <div className="login-box">
                 <h2>Login</h2>
                 <div className="user-box">
-                    <input className="mb-1" type="text" name="email" value={user.email} onChange={handleChange} required="" />
+                    <input className="mb-1"  type="text" placeholder='muazshahzad667@gmail.com' name="email" value={user.email} onChange={handleChange} required="" />
                     <label className="mt-2">Email</label>
                 </div>
                 <div className="user-box">
-                    <input className="mb-1" type="password" name="password" value={user.password} onChange={handleChange} required="" />
+                    <input className="mb-1"  type="password" placeholder='Muaz@123' name="password" value={user.password} onChange={handleChange} required="" />
                     <label className="mt-2">Password</label>
                 </div>
                 <div className="button-form button">
@@ -68,6 +87,26 @@ function Login({ setLoginUser }) {
                     </a>
                 </div>
             </div>
+
+            {/* Dialog */}
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle style={{color: "red"}} id="alert-dialog-title">
+                    {"Alert..!!!"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText style={{color: "black"}} id="alert-dialog-description">
+                        Input Fields Must Be Filled
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button style={{color: "green"}} onClick={handleClose}>OK</Button>
+                </DialogActions>
+            </Dialog>
         </>
 
     )

@@ -5,8 +5,8 @@ import "../Testimonial/Testimonial.css"
 const Testimonal = () => {
   return (
     <>
-      <section className='testimonal padding'>
-        <div className='container'>
+      <section className='testimonal padding mb-5'>
+        <div className='container mb-5'>
           <div id='heading'>
             <h3 className="About-h3">TESTIMONIAL</h3>
             <h1 style={{ fontSize: "30px" }} className="About-title">Our Successful Students</h1>

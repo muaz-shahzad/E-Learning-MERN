@@ -95,19 +95,23 @@ p {
   z-index: -1;
   width: 100%;
   height: 100vh;
-  padding-top: 30%;
-  padding-right: 50px;
+  /* padding-top: 30%;
+  padding-right: 50px; */
   color: #fff;
-  text-align: center;
+  /* text-align: center;
+  cursor: pointer; */
 }
 .back h1 {
   font-size: 100px;
   font-weight: 400;
 }
+
 .back h2 {
   font-weight: 500;
   font-size: 17px;
   text-transform: uppercase;
+  cursor: pointer !important;
+
 }
 .margin {
   margin-top: 40.3%;

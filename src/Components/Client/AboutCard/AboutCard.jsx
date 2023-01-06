@@ -1,11 +1,14 @@
 import React from "react"
 import "../AboutCard/AboutCard.css";
-
+import Header from "../Header/Header";
+import Hero from "../Hero/Hero";
 import { homeAbout } from "../../../dummydata"
 
 const AboutCard = () => {
     return (
         <>
+            {/* <Header />
+            <Hero /> */}
             <section className='aboutHome'>
                 <div className='container flexSB'>
                     <div className="row">
@@ -15,7 +18,7 @@ const AboutCard = () => {
                         <div className="col-lg-6">
                             <div id='heading'>
                                 <h3 className="About-h3">LEARN ANYTHING</h3>
-                                <h1 style={{fontSize: "30px"}} className="About-title">Benefits About Online Learning Expertise</h1>
+                                <h1 style={{ fontSize: "30px" }} className="About-title">Benefits About Online Learning Expertise</h1>
                             </div>
                             <div className='items'>
                                 {homeAbout.map((val) => {

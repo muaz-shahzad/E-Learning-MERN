@@ -33,6 +33,10 @@ function Admin({ setadmin1 }) {
                     setadmin1(res.data.admin)
                     navigate("/homeadmin")
                 })
+                setadmin({
+                    email1: "",
+                    password1: ""
+                })
         } else {
             alert("Input Fields Must Be Filled")
         }
@@ -44,12 +48,12 @@ function Admin({ setadmin1 }) {
             <div className="login-box">
                 <h2>Admin Login</h2>
                 <div className="user-box">
-                    <input type="text" name="email1" value={admin.email1} onChange={handleChange} required="" />
-                    <label>Email</label>
+                    <input className='mb-1' type="text" placeholder='muazshahzad667@gmail.com' name="email1" value={admin.email1} onChange={handleChange} required="" />
+                    <label className='mt-2'>Email</label>
                 </div>
                 <div className="user-box">
-                    <input type="password" name="password1" value={admin.password1} onChange={handleChange} required="" />
-                    <label>Password</label>
+                    <input className='mb-1' type="password" placeholder='Muaz@123' name="password1" value={admin.password1} onChange={handleChange} required="" />
+                    <label className='mt-2'>Password</label>
                 </div>
                 <div className="button-form1 button">
                     <a id="submitadmin" href="#" onClick={Adminlogin}>

@@ -17,14 +17,19 @@ import Home from './Components/Client/Home/Home';
 import Head from './Components/Client/Head/Head';
 
 import AboutPage from './Components/Pages/AboutPage';
-import Contactus from './Components/Client/ContactUs/Contactus';
-import TeamP from './Components/Client/Team/TeamP';
+import TeamPage from './Components/Pages/TeamPage';
+import ContactPage from './Components/Pages/ContactPage';
+import Userprofile from './Components/UserProfile/Userprofile';
+import UserPage from './Components/Pages/UserPage';
+
+
+
 
 function App() {
   const [user, setLoginUser] = useState({})
   const [admin, setadmin1] = useState({})
   // alert(admin)
-
+  
 
 
   return (
@@ -61,7 +66,10 @@ function App() {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/contact" element={
             user && user._id ? (
-              <Contactus
+              <ContactPage
+              setLoginUser={setLoginUser}
+                Username={user.name}
+                Email={user.email}
               />
             ) : (
               <Navigate replace to="/" />
@@ -71,6 +79,9 @@ function App() {
           <Route path="/aboutpage" element={
             user && user._id ? (
               <AboutPage
+                setLoginUser={setLoginUser}
+                Username={user.name}
+                Email={user.email}
               />
             ) : (
               <Navigate replace to="/" />
@@ -79,7 +90,23 @@ function App() {
           />
           <Route path="/team" element={
             user && user._id ? (
-              <TeamP
+              <TeamPage
+              setLoginUser={setLoginUser}
+                Username={user.name}
+                Email={user.email}
+              />
+            ) : (
+              <Navigate replace to="/" />
+            )
+          }
+          />
+           <Route path="/profile" element={
+            user && user._id ? (
+              <UserPage
+              setLoginUser={setLoginUser}
+                Username={user.name}
+                Email={user.email}
+                userid={user._id}
               />
             ) : (
               <Navigate replace to="/" />
@@ -87,6 +114,26 @@ function App() {
           }
           />
         </Routes>
+        {/* <UserPage/> */}
+
+        {/* <div>
+          <h2>Validating Email in ReactJS</h2>
+          <span>Enter Email: </span>
+          <input
+            type="text"
+            id="userEmail"
+            onChange={(e) => validateEmail(e)}
+          ></input>
+          <br />
+          <span
+            style={{
+              fontWeight: "bold",
+              color: "red"
+            }}
+          >
+            {message}
+          </span>
+        </div> */}
       </div>
     </>
   );

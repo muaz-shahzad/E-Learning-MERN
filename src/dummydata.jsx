@@ -265,24 +265,24 @@ export const homeAbout = [
       work: "DEVELOPER AND LEAD INSTRUCTOR",
     },
     {
-      cover: "./images/team/t5.webp",
-      name: "Ph.D Adrian Molises",
+      cover: "./images/team/1.png",
+      name: "Catherine Wilson",
       work: "DEVELOPER AND LEAD INSTRUCTOR",
     },
     {
-      cover: "./images/team/t6.webp",
-      name: "Ph.D Arthur MaGregor",
+      cover: "./images/team/2.png",
+      name: "Maria Knopp",
       work: "DEVELOPER AND LEAD INSTRUCTOR",
     },
     {
-      cover: "./images/team/t7.webp",
-      name: "Ph.D Anna Hanzen",
+      cover: "./images/team/3.png",
+      name: "Austin Fiden",
       work: "DEVELOPER AND LEAD INSTRUCTOR",
     },
     {
-      cover: "./images/team/t8.webp",
-      name: "Ph.D Brian Wooden",
-      work: "DEVELOPER AND LEAD INSTRUCTOR",
+      cover: "./images/team/4.png",
+      name: "Andrea Levy",
+      work: "Psychologist",
     },
   ]
   export const price = [
@@ -392,23 +392,23 @@ export const homeAbout = [
   export const testimonal = [
     {
       id: 1,
-      name: "ROGER SCOTT",
-      post: "MARKETING MANAGER",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      name: "TALHA ZAFAR",
+      post: "ENGINEERING STUDENT",
+      desc: "I say enough good things about ACADEMIA ONLINE EDUCATION & LEARNING. The courses are top-notch and the instructors are knowledgeable and engaging. ",
       cover: "./images/testo/t1.webp",
     },
     {
       id: 2,
-      name: "ROGER SCOTT",
-      post: "MARKETING MANAGER",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      name: "M MUAZ SHAHZAD",
+      post: "PROJECT MANAGER",
+      desc: "I've taken several courses on ACADEMIA ONLINE EDUCATION & LEARNING and have always come away with valuable skills and knowledge.",
       cover: "./images/testo/t2.webp",
     },
     {
       id: 3,
-      name: "ROGER SCOTT",
-      post: "MARKETING MANAGER",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      name: "SHAHAB TAHIR",
+      post: "PROFESSOR",
+      desc: "I highly recommend ACADEMIA ONLINE EDUCATION & LEARNING to anyone looking to learn new skills and advance their career.",
       cover: "./images/testo/t3.webp",
     },
   ]

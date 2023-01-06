@@ -15,14 +15,10 @@ const Chooseus = () => {
           <Col lg="6" md="6">
             <div className="choose__content">
               <h2>Why Choose Us</h2>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Incidunt mollitia nostrum harum eos praesentium odit a sed quod
-                aut fugit. Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Reprehenderit omnis, culpa eligendi inventore perspiciatis
-                minus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolores cupiditate facilis provident quidem accusamus impedit
-                tenetur laboriosam debitis nisi eius!
+              <p style={{textAlign: "justify"}}>
+                Welcome to ACADEMIA ONLINE EDUCATION & LEARNING – the premier destination for high-quality e-learning courses. With a wide range of topics and expert instructors, 
+                we have something for everyone Our platform is designed to provide you with the most convenient, interactive, and effective learning experience possible. With a focus on flexible scheduling and personalized support, you'll have everything you need to succeed. <br/>
+                But don't just take our word for it – see for yourself why so many people choose ACADEMIA ONLINE EDUCATION & LEARNING. With a money-back guarantee and a satisfaction guarantee, you can trust that we stand behind our courses. So why wait? Start learning today and take the first step towards achieving your goals!"
               </p>
             </div>
           </Col>

@@ -2,7 +2,9 @@
     padding: 30px;
     transition: 0.5s;
   }
-  
+  .testimonal{
+    padding: 0px !important;
+  }
   .testimonal .img {
     position: relative;
   }

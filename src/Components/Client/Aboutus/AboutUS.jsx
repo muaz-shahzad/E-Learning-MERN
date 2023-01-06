@@ -20,9 +20,7 @@ const AboutUS = () => {
             <div className="about__content">
               <h2>About Us</h2>
               <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Excepturi cupiditate animi deserunt libero nesciunt corporis
-                explicabo nobis ex quo molestiae!
+              ACADEMIA ONLINE EDUCATION & LEARNING is a comprehensive e-learning platform offering a wide range of courses and expert instruction to help you learn new skills and advance your career.
               </p>
 
               <div className="about__counter">

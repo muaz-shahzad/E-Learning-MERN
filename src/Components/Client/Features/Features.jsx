@@ -8,20 +8,20 @@ import CardMembershipIcon from '@mui/icons-material/CardMembership';
 const FeatureData = [
   {
     title: "Quick Learning",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestias, aperiam doloribus aut sapiente praesentium eos iste dicta amet itaque!",
-    icon: <GradingIcon style={{color: "#17bf9e",fontSize: "45px"}}/>
+    desc: "First and foremost, it allows you to learn at your own pace, on your own schedule. This means you can fit learning into your busy lifestyle, rather than having to rearrange your life to accommodate a set class schedule",
+    icon: <GradingIcon style={{ color: "#17bf9e", fontSize: "45px" }} />
   },
 
   {
     title: "All Time Support",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestias, aperiam doloribus aut sapiente praesentium eos iste dicta amet itaque!",
-    icon: <ForumIcon style={{color: "#17bf9e",fontSize: "45px"}}/>
+    desc: "Our all-time support ensures that you'll never be left in the dark when you need assistance. Whether you have a question about a course concept, need technical help, our team of experts is here to help.",
+    icon: <ForumIcon style={{ color: "#17bf9e", fontSize: "45px" }} />
   },
 
   {
     title: "Certification",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestias, aperiam doloribus aut sapiente praesentium eos iste dicta amet itaque!",
-    icon: <CardMembershipIcon style={{color: "#17bf9e",fontSize: "45px"}}/>
+    desc: "Elevate your career and stand out in the job market with our online learning certification. Our comprehensive courses are designed to provide you with the skills and knowledge you need to succeed in your field. ",
+    icon: <CardMembershipIcon style={{ color: "#17bf9e", fontSize: "45px" }} />
   },
 ];
 
@@ -39,7 +39,7 @@ const Features = () => {
                   {/* <h2>{item.icon}</h2> */}
                 </h2>
                 <h6>{item.title}</h6>
-                <p>{item.desc}</p>
+                <p >{item.desc}</p>
               </div>
             </Col>
           ))}

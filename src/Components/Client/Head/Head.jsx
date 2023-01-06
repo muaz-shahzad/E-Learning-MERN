@@ -7,16 +7,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { useNavigate } from "react-router-dom"
 
-function Head({setUser1,Username}) {
+function Head({ setUser1, Username }) {
+  const navigate = useNavigate();
 
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
-
+ 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -65,8 +64,8 @@ function Head({setUser1,Username}) {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>{Username}</MenuItem>
+              <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
+              <MenuItem>{Username}</MenuItem>
               <MenuItem onClick={() => setUser1({})}>Logout</MenuItem>
             </Menu>
           </div>

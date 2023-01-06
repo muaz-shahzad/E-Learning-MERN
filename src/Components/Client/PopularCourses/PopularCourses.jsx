@@ -38,7 +38,7 @@ const coursesData = [
 
 const PopularCourses = () => {
   return (
-    <section>
+    <section className="mt-5">
       <Container>
         <Row>
           <Col lg="12" className="mb-5">
@@ -46,9 +46,8 @@ const PopularCourses = () => {
               <div className="course__top__left w-50">
                 <h2>Our Popular Courses</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                  consequatur libero quod voluptatibus ullam quia quas, vitae
-                  voluptatem recusandae reprehenderit!
+                Transform Your Career with Our Top-Rated Data Courses! Learn the skills you need to land a high-paying job in the field
+               
                 </p>
               </div>
 

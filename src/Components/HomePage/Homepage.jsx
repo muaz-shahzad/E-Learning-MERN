@@ -23,21 +23,12 @@ const Homepage = ({ setLoginUser, Username }) => {
 
     return (
         <>
-            {/* <div className="homepage">
-                <h1>Hello {Username} {Email}</h1>
-                <div className="button" onClick={() => setLoginUser({})}>Logout</div>
-            </div> */}
             <Head
                 setUser1={setLoginUser}
                 Username={Username}
             />
             <Home />
-            {/* <Routes>
-                <Route exact path="/contact" element={<Contactus />}></Route>
-                <Route path="/aboutpage" element={<AboutPage />}></Route>
-                <Route path="/team" element={<TeamP />}></Route>
-            </Routes> */}
-            {/* <Footer /> */}
+          
 
 
 
