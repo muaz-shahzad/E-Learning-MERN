@@ -29,27 +29,26 @@ function Register() {
   const register = () => {
     const { name, email, password, reEnterPassword } = user
 
-    if(validator.isAlphanumeric(name))
-    {
-      // alert("Character nhi hayn")
-      
+    if (validator.isAlphanumeric(name)) {
+      // alert("Character nhi hayn")'
     }
-    else{
+    else {
       // alert("Character hayn");
       window.location.reload(false);
       //Ye best h character nhi hnt chaiye
+     
     }
     // Perfect run kar rhi ye condition
-    if (!validator.isNumeric(name) ) {
+    if (!validator.isNumeric(name)) {
       // alert("Perfect Name")
-       
+
     }
     else {
       // alert("Numeric hayn")
       window.location.reload(false);
       //Ye best h Numeric nhi hnt chaiye
+      
     }
-   
     if (validator.isEmail(email) && !validator.isAlphanumeric(password)) {
       // 
       if (name && email && password && (password === reEnterPassword)) {
@@ -66,7 +65,8 @@ function Register() {
         })
       }
       else {
-        // alert("Input Fields Must Be Filled")
+        
+        alert("Input Fields Must Be Filled");
       }
     }
     else {
