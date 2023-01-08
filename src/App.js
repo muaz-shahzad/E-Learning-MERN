@@ -48,15 +48,18 @@ import GCoursesDetail from './Components/Client/CourseCategories/Graphic/GCourse
 import HealthCoursesDetailUI from './Components/Client/CourseCategories/Health/HealthCoursesDetailUI';
 import HistoryCoursesDetail from './Components/Client/CourseCategories/History/HistoryCoursesDetail';
 import SecurCoursesDetail from './Components/Client/CourseCategories/Information/SecurCoursesDetail';
+import Adminpage from './Components/AdminPannel/Adminpage';
+import AdminTable from './Components/AdminPannel/AdminTable';
+import Addcourse from './Components/AdminPannel/AddCourse/Addcourse';
+import Updcours from './Components/AdminPannel/UpdCourse/Updcours';
+import Dltecourse from './Components/AdminPannel/DlteCourse/Dltecourse';
 
 
 
 
 function App() {
   const [user, setLoginUser] = useState({})
-  const [admin, setadmin1] = useState({})
-  // alert(admin)
-
+  const [admin, setNewadmin] = useState({})
 
 
   return (
@@ -84,12 +87,27 @@ function App() {
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/register" element={<Register />}></Route>
           {
-            admin && admin._id ? <Route exact path="/homeadmin" element={<HomeAdmin />}></Route>
+            admin && admin._id ? <Route exact path="/homeadmin" element={
+              <Adminpage
+                setNewadmin={setNewadmin}
+                adminEmail={admin.email}
+
+              />
+            }>
+
+            </Route>
               :
-              <Route path="/admin" element={<Admin setadmin1={setadmin1} />}></Route>
+              <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
           }
-          <Route path="/admin" element={<Admin setadmin1={setadmin1} />}></Route>
-          <Route exact path="/homeadmin" element={<HomeAdmin />}></Route>
+          <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
+          <Route exact path="/homeadmin" element={<Adminpage
+            setNewadmin={setNewadmin}
+            adminEmail={admin.email}
+
+          />
+          }>
+
+          </Route>
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/contact" element={
             user && user._id ? (
@@ -153,9 +171,9 @@ function App() {
             )
           }
           />
-          {/* COurses Category Routes */}
+      {/* COurses Category Routes */}
 
-          <Route path="/art" element={
+      <Route path="/art" element={
             user && user._id ? (
               <ArtPage
                 setLoginUser={setLoginUser}
@@ -494,7 +512,8 @@ function App() {
           }
 
           />
-
+<Route path="/Addcourse" element={<Addcourse />} />
+        <Route path="/updtcourse" element={<Updcours />} />
 
 
 
@@ -513,10 +532,8 @@ function App() {
 
 
         </Routes>
-
-        {/* <CoursesDetailUI/> */}
-
       </div>
+
     </>
   );
 }

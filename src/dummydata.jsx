@@ -1,3 +1,5 @@
+import Feedback from "react-bootstrap/esm/Feedback"
+
 export const homeAbout = [
   {
     id: 1,
@@ -459,3 +461,71 @@ export const UIData = [
     imgUrl: "../images/ui-ux.png",
   },
 ];
+
+
+// Admin Pannel Download courses
+export const Downloadcourse = [
+  {
+    key: 1,
+    courseid: "1",
+    userid: "1",
+    username: "Muaz",
+    coursename: "Web development",
+    category: "Web",
+    Feedback: "Good Course",
+    Action: "Download"
+  },
+  {
+    key: 2,
+    courseid: "2",
+    userid: "2",
+    username: "Muaz",
+    coursename: "Web development",
+    category: "Web",
+    Feedback: "Good Course",
+    Action: "Download"
+  }
+]
+
+export const Downloadcoursedownload = [
+  {
+    key: 1,
+    userid: "1",
+    username: "Muaz",
+    Totalcourse: "5"
+  },
+  {
+    key: 2,
+    userid: "2",
+    username: "Talha",
+    Totalcourse: "5"
+  },
+]
+
+export const Registereuser = [
+  {
+    key: 1,
+    userid: "1",
+    username: "Muaz",
+  },
+  {
+    key: 2,
+    userid: "2",
+    username: "Talha",
+  },
+]
+
+export const Totalcourse = [
+  {
+    key: 1,
+    courseid: "1",
+    coursename: "development",
+    category: "Web",
+  },
+  {
+    key: 2,
+    courseid: "2",
+    coursename: "Design",
+    category: "UI",
+  },
+]
