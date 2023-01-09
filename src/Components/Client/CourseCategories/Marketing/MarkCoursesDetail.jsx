@@ -14,7 +14,7 @@ function MarkCoursesDetail({ setLoginUser, Username }) {
                 Username={Username}
             />
             <Header />
-            <Back title='Courses Detail' />
+            <Back title='Courses Detail Marketing' />
             <MarkCourseInfo/>
             <Footer />
         </>

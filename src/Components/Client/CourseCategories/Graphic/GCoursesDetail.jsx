@@ -5,6 +5,7 @@ import Back from '../../../Back/Back'
 import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import GUICourseCard from './GUICourseCard'
+import GCourseInfo from './GCourseInfo'
 
 function GCoursesDetail({ setLoginUser, Username }) {
     return (
@@ -14,8 +15,8 @@ function GCoursesDetail({ setLoginUser, Username }) {
                 Username={Username}
             />
             <Header />
-            <Back title='Courses Detail' />
-            <GUICourseCard/>
+            <Back title='Courses Detail GUI' />
+            <GCourseInfo/>
             <Footer />
         </>
     )

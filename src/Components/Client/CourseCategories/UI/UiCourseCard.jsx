@@ -9,10 +9,10 @@ const UiCourseCard = (props) => {
     return (
         <Col lg="3" md="4" className="mt-3 mb-4" >
         <div className="single__free__course">
-            <div className="uifree__course__img mb-4" id={props.id}>
-                <img src={props.imgUrl} alt="" className="w-100" id={props.id}
+            <div className="uifree__course__img mb-4" id={props.keyui}>
+                <img src={props.imgUrl} alt="" className="w-100" id={props.keyui}
                     onClick={() => {
-                        props.Selected_Image(props)
+                        props.Selected_Image(props.keyui)
                     }}
                 />
                 <button className="btn uifree__btn">See Info</button>

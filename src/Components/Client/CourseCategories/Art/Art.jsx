@@ -13,22 +13,14 @@ function Art() {
 
     const navigate = useNavigate();
 
-    const [Propstate, setstate] = useState()
 
 
 
-    const Select_img = (props) => {
-        // console.log("UI ID => ", props.id);
-        // console.log("UI ID => ", props.title);
-        //  navigate("/UI/")
-        // console.log("Selected Image Props => ", props);
-        setstate(props)
-        // console.log("Var Props => ", Propslight);
+    const Select_img = (id) => {
 
-         navigate("/artcoursedetail")
+        navigate(`/courses/art/${id}`);
     }
 
-    console.log("Var Props => ", Propstate);
 
 
 
@@ -65,4 +57,3 @@ function Art() {
 }
 
 export default Art
-    

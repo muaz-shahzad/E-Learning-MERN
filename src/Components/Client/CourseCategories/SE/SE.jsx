@@ -9,15 +9,11 @@ import { useState } from 'react'
 function SE() {
     const navigate = useNavigate();
 
-    
-    const Select_img = (props) => {
-        // console.log("UI ID => ", props.id);
-        // console.log("UI ID => ", props.title);
-        //  navigate("/UI/")
-        // console.log("Selected Image Props => ", props);
-        // console.log("Var Props => ", Propslight);
 
-         navigate("/coursedetailse")
+    const Select_img = (id) => {
+        console.log("SE ID => ", id);
+        
+        navigate(`/courses/software/${id}`);
     }
     return (
         <>

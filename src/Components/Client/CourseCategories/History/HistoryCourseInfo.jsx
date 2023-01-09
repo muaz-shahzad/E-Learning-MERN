@@ -1,10 +1,19 @@
 import React from 'react'
 import img1 from "../../../../assests/images/about-us.png"
+import { UIData } from '../../../../dummydata';
+import { json, useParams } from 'react-router'
+
 
 const HistoryCourseInfo = () => {
+
+    const { id } = useParams();
+    const imageUrl = UIData[id].imgUrl
+    console.log("Image url ", imageUrl)
+    var newimg = JSON.stringify((imageUrl));
+    console.log("Json img ", newimg)
     return (
         <>
-            <div className="sg-section">
+               <div className="sg-section">
                 <div className="section-content course-details bg-white section-padding">
 
 
@@ -16,7 +25,7 @@ const HistoryCourseInfo = () => {
                                         <img src={img1} alt="Image" className="img-fluid" />
                                     </div>
                                     <div className="course-info " style={{ textAlign: "justify" }}>
-                                        <h2 className="title mt-2">Visual Basic Web Course With Live Project</h2>
+                                        <h2 className="title mt-2">{UIData[id].title}</h2>
                                         <p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolor autem voluptatibus aspernatur, quidem possimus modi vero voluptas dicta quo nisi consequatur quod illum, ex, numquam neque doloremque ducimus magnam culpa?</p>
                                         <p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolor autem voluptatibus aspernatur, quidem possimus modi vero voluptas dicta quo nisi consequatur quod illum, ex, numquam neque doloremque ducimus magnam culpa?</p>
                                         <p>Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Dolor autem voluptatibus aspernatur, quidem possimus modi vero voluptas dicta quo nisi consequatur quod illum, ex, numquam neque doloremque ducimus magnam culpa?</p>
@@ -43,43 +52,6 @@ const HistoryCourseInfo = () => {
 
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugit eos quisquam sequi minima beatae ullam necessitatibus vel quae architecto, similique dicta voluptate iusto voluptatem suscipit, maxime vero rerum consequuntur quaerat dignissimos minus accusantium. Repellendus eum nihil aliquid quis soluta, quia ducimus omnis pariatur, illo!</p>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti fugit eos quisquam sequi minima beatae ullam necessitatibus vel quae architecto, similique dicta voluptate iusto voluptatem suscipit, maxime vero rerum consequuntur quaerat dignissimos minus accusantium. Repellendus eum nihil aliquid quis soluta, quia ducimus omnis pariatur, illo!</p>
-                                                    <div className="">
-                                                        <h6 style={{ fontSize: "22px" }}>Requirements</h6>
-                                                        <ul className='global-list'>
-                                                            <li className='coursedetail_list'>Any version of Adobe Illustrator, preferably not older than Illustrator CS6. Ideally Illustrator CC (Creative Cloud)</li>
-                                                            <li className='coursedetail_list'>Prior knowledge is not needed</li>
-                                                            <li className='coursedetail_list'>Exercise Files and Study Guides are provided</li>
-                                                            <li className='coursedetail_list'>Permanent Software 2020, with activetor</li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <div className="you-learn mb-5">
-                                                        <h6 style={{ fontSize: "22px" }}>What you'll learn</h6>
-                                                        <div className='container-fluid'>
-                                                            <div className='row'>
-                                                                <div className='col-lg-6 '>
-                                                                    <ul className="global-list">
-                                                                        <li className='coursedetail_list1 mt-2'> Logo Design</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Preparing graphics for web and print</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Creative vector illustrations</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Designing infographics</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Game theme Design</li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div className='col-lg-6'>
-                                                                    <ul className="global-list">
-                                                                        <li className='coursedetail_list1 mt-2'> Turning photographs int vector artwork</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Working with type in creative ways</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Vectorizing and color traced hand drawing</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Flyer and Business Card Design</li>
-                                                                        <li className='coursedetail_list1 mt-2'> Learn illustrator 2020 version & Software</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
                                                     {/* <a href="#" className="btn btn-primary"><span className="mdi mdi-name mdi-cart-outline"></span> Order Now</a> */}
 
                                                 </div>
@@ -99,18 +71,13 @@ const HistoryCourseInfo = () => {
                                                     <h6 style={{ fontSize: "22px" }}>Leave a Comment</h6>
                                                     <div className="comments-form">
                                                         <form action="#">
-                                                            <div className="row">
-                                                                <div className="col-md-6">
-                                                                    <input type="text" className="form-control" placeholder="name" />
-                                                                </div>
-                                                                <div className="col-md-6">
-                                                                    <input type="email" className="form-control" placeholder="Email" />
-                                                                </div>
-                                                            </div>
                                                             <textarea name="message" className="form-control" required="required" rows="7" placeholder="Write a comment..."></textarea>
                                                             <button type="submit" className="btn btn-primary">Submit</button>
                                                         </form>
                                                     </div>
+                                                </div>
+                                                <div className='text-end'>
+                                                    <button className='btn text-end'>Download</button>
                                                 </div>
                                             </div>
                                         </div>

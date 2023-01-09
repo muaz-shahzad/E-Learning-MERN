@@ -1,4 +1,6 @@
 import Feedback from "react-bootstrap/esm/Feedback"
+import img1 from "./assests/images/web-development.png"
+
 
 export const homeAbout = [
   {
@@ -430,33 +432,35 @@ export const testimonal = [
 
 
 // COurses Categories Data
+// import img1 from "../images/web-development.png"
+// import img1 from "./assests/images/web-development.png"
 export const UIData = [
   {
-    key: 1,
+    key: 0,
     title: "Basic UI Course",
-    imgUrl: "../images/web-development.png",
+    imgUrl: img1,
 
   },
   {
-    key: 2,
+    key: 1,
     title: "UI Basic Course",
     imgUrl: "../images/kids-learning.png",
   },
 
   {
-    key: 3,
+    key: 2,
     title: "UI Course",
     imgUrl: "../images/seo.png",
 
   },
 
   {
-    key: 4,
+    key: 3,
     title: "Basic UI/UX Design - Figma",
     imgUrl: "../images/ui-ux.png",
   },
   {
-    key: 5,
+    key: 4,
     title: "Basic UI/UX Design - Figma",
     imgUrl: "../images/ui-ux.png",
   },

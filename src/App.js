@@ -86,29 +86,25 @@ function App() {
           />
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          {
-            admin && admin._id ? <Route exact path="/homeadmin" element={
-              <Adminpage
-                setNewadmin={setNewadmin}
-                adminEmail={admin.email}
+          <Route
 
-              />
-            }>
+            path="/homeadmin"
+            element={
+              admin && admin._id ? (
+                <Adminpage
+                  setNewadmin={setNewadmin}
+                  adminEmail={admin.email}
 
-            </Route>
-              :
-              <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
-          }
-          <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
-          <Route exact path="/homeadmin" element={<Adminpage
-            setNewadmin={setNewadmin}
-            adminEmail={admin.email}
-
+                />
+              ) : (
+                <Navigate replace to="/admin" />
+              )
+            }
           />
-          }>
+          <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
 
-          </Route>
-          <Route path="*" element={<Navigate to="/" />} />
+          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+
           <Route path="/contact" element={
             user && user._id ? (
               <ContactPage
@@ -171,366 +167,64 @@ function App() {
             )
           }
           />
-      {/* COurses Category Routes */}
+          <Route path='/courses/UI' element={<UIUXPage />} />
+          <Route path='/courses/UI/:id' element={<CoursesDetailUI />} />
 
-      <Route path="/art" element={
-            user && user._id ? (
-              <ArtPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
-          <Route path="/buisness" element={
-            user && user._id ? (
-              <BusinessAdministrationPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/art' element={<ArtPage />} />
+          <Route path='/courses/art/:id' element={<ArtCoursesDetail />} />
 
-          <Route path="/computer" element={
-            user && user._id ? (
-              <ComputerPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/computer' element={<ComputerPage />} />
+          <Route path='/courses/computer/:id' element={<CSCoursesDetail />} />
 
-          <Route path="/graphic" element={
-            user && user._id ? (
-              <GraphicPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/history' element={<HistoryPage />} />
+          <Route path='/courses/history/:id' element={<HistoryCoursesDetail />} />
 
-          <Route path="/health" element={
-            user && user._id ? (
-              <HealthPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/software' element={<SEPage />} />
+          <Route path='/courses/software/:id' element={<CourseDetailSE />} />
 
-          <Route path="/history" element={
-            user && user._id ? (
-              <HistoryPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/security' element={<InfoSecurityPage />} />
+          <Route path='/courses/security/:id' element={<SecurCoursesDetail />} />
 
+          <Route path='/courses/health' element={<HealthPage />} />
+          <Route path='/courses/health/:id' element={<HealthCoursesDetailUI />} />
 
-          <Route path="/security" element={
-            user && user._id ? (
-              <InfoSecurityPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
-          <Route path="/market" element={
-            user && user._id ? (
-              <MarketingPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
-          <Route path="/music" element={
-            user && user._id ? (
-              <MusicPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/market' element={<MarketingPage />} />
+          <Route path='/courses/market/:id' element={<MarkCoursesDetail />} />
 
-          <Route path="/software" element={
-            user && user._id ? (
-              <SEPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-          />
+          <Route path='/courses/graphic' element={<GraphicPage />} />
+          <Route path='/courses/graphic/:id' element={<GCoursesDetail />} />
 
-          <Route path="/UI" element={
-            user && user._id ? (
-              <UIUXPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }>
-          </Route>
+          <Route path='/courses/music' element={<MusicPage />} />
+          <Route path='/courses/music/:id' element={<MusicCoursesDetail />} />
 
-          <Route path="/web" element={
-            user && user._id ? (
-              <WebPage
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
+          <Route path='/courses/buisness' element={<BusinessAdministrationPage />} />
+          <Route path='/courses/buisness/:id' element={<BCoursesDetail />} />
 
-          />
-
-          <Route path="/coursedetail" element={
-            user && user._id ? (
-              <CoursesDetailUI
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/coursedetailse" element={
-            user && user._id ? (
-              <CourseDetailSE
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/coursedetailw" element={
-            user && user._id ? (
-              <CourseDetailW
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/musiccoursedetail" element={
-            user && user._id ? (
-              <MusicCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-
-          <Route path="/marketingcoursedetail" element={
-            user && user._id ? (
-              <MarkCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/artcoursedetail" element={
-            user && user._id ? (
-              <ArtCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/buisnesscoursedetail" element={
-            user && user._id ? (
-              <BCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-
-          <Route path="/computercoursedetail" element={
-            user && user._id ? (
-              <CSCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/graphiccoursedetail" element={
-            user && user._id ? (
-              <GCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/healthcoursedetail" element={
-            user && user._id ? (
-              <HealthCoursesDetailUI
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-          <Route path="/historycoursedetail" element={
-            user && user._id ? (
-              <HistoryCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-
-
-          <Route path="/securitycoursedetail" element={
-            user && user._id ? (
-              <SecurCoursesDetail
-                setLoginUser={setLoginUser}
-                Username={user.name}
-                Email={user.email}
-                userid={user._id}
-              />
-            ) : (
-              <Navigate replace to="/" />
-            )
-          }
-
-          />
-<Route path="/Addcourse" element={<Addcourse />} />
-        <Route path="/updtcourse" element={<Updcours />} />
+          <Route path='/courses/web' element={<WebPage />} />
+          <Route path='/courses/web/:id' element={<CourseDetailW />} />
 
 
 
 
 
+      
+
+         
+          
+
+       
+
+        
+
+         
+
+        
 
 
 
-
-
-
-
-
-
-
-
-
+         
+          <Route path="/Addcourse" element={<Addcourse />} />
+          <Route path="/updtcourse" element={<Updcours />} />
         </Routes>
       </div>
 

@@ -4,6 +4,7 @@ import { online } from "../../../dummydata"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import BrowseCourse from "./BrowseCourse"
+import ScrollTop from "../../../ScrollonTop"
 
 
 const Courses = () => {
@@ -15,18 +16,18 @@ const Courses = () => {
 
         switch (id) {
 
-            case 0: return navigate("/UI");
-            case 1: return navigate("/art");
-            case 2: return navigate("/computer");
-            case 3: return navigate("/history");
-            case 4: return navigate("/software");
-            case 5: return navigate("/security");
-            case 6: return navigate("/health");
-            case 7: return navigate("/market");
-            case 8: return navigate("/graphic");
-            case 9: return navigate("/music");
-            case 10: return navigate("/buisness");
-            case 11: return navigate("/web");
+            case 0: return navigate("/courses/UI");
+            case 1: return navigate("/courses/art");
+            case 2: return navigate("/courses/computer");
+            case 3: return navigate("/courses/history");
+            case 4: return navigate("/courses/software");
+            case 5: return navigate("/courses/security");
+            case 6: return navigate("/courses/health");
+            case 7: return navigate("/courses/market");
+            case 8: return navigate("/courses/graphic");
+            case 9: return navigate("/courses/music");
+            case 10: return navigate("/courses/buisness");
+            case 11: return navigate("/courses/web");
 
 
 
@@ -37,6 +38,7 @@ const Courses = () => {
     }
     return (
         <>
+        <ScrollTop/>
             <section className='online'>
                 <div className='container'>
                     {/* <Heading subtitle='COURSES' title='Browse Our Online Courses' /> */}

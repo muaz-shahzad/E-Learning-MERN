@@ -20,20 +20,12 @@ const Home = () => {
       <Header />
       <Hero />
       <HeroSection />
-      {/* <Features /> */}
       <AboutCard />
-      
-      {/* <AboutUS /> */}
-      {/* <Courses /> */}
-      
       <PopularCourses />
-     
       <FreeCourse />
       <Features /> 
       <Chooseus />
-
       <Testimonal />
-     
       <Footer />
     </>
   )

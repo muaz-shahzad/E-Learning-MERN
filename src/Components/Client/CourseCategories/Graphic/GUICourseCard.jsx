@@ -12,7 +12,7 @@ const GUICourseCard = (props) => {
             <div className="uifree__course__img mb-4" id={props.id}>
                 <img src={props.imgUrl} alt="" className="w-100" id={props.id}
                     onClick={() => {
-                        props.Selected_Image(props)
+                        props.Selected_Image(props.id)
                     }}
                 />
                 <button className="btn uifree__btn">See Info</button>

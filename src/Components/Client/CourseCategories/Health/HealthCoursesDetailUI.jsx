@@ -15,7 +15,7 @@ function HealthCoursesDetailUI({ setLoginUser, Username }) {
                 Username={Username}
             />
             <Header />
-            <Back title='Courses Detail ' />
+            <Back title='Courses Detail Health' />
             <HealthCourseInfo/>
             <Footer />
         </>

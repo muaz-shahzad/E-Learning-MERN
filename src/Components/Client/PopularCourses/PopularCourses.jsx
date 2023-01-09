@@ -6,6 +6,8 @@ import courseImg3 from "../../../assests/images/ui-ux.png";
 import "../PopularCourses/Popularcourse.css";
 import Coursecard from "../Courses/Coursecard";
 
+import { useNavigate } from "react-router";
+
 
 const coursesData = [
   {
@@ -37,6 +39,17 @@ const coursesData = [
 ];
 
 const PopularCourses = () => {
+  const navigate = useNavigate();
+
+
+  const getstart = ()=>{
+
+    console.log("chl rah hay")
+    
+    navigate("/courses");
+  }
+
+
   return (
     <section className="mt-5">
       <Container>
@@ -52,7 +65,7 @@ const PopularCourses = () => {
               </div>
 
               <div className="w-50 text-end">
-                <button className="btn">See All</button>
+                <button className="btn" onClick={getstart}>See All</button>
               </div>
             </div>
           </Col>

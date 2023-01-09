@@ -14,7 +14,7 @@ function SecurCoursesDetail({ setLoginUser, Username }) {
                 Username={Username}
             />
             <Header />
-            <Back title='Courses Detail UI' />
+            <Back title='Courses Detail Secure' />
             <SecurCourseInfo/>
             <Footer />
         </>
