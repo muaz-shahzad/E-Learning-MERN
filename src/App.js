@@ -103,7 +103,7 @@ function App() {
           />
           <Route path="/admin" element={<Admin setNewadmin={setNewadmin} />}></Route>
 
-          {/* <Route path="*" element={<Navigate to="/" />} /> */}
+          <Route path="*" element={<Navigate to="/" />} />
 
           <Route path="/contact" element={
             user && user._id ? (

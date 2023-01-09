@@ -21,9 +21,9 @@ const AboutCard = () => {
                                 <h1 style={{ fontSize: "30px" }} className="About-title">Benefits About Online Learning Expertise</h1>
                             </div>
                             <div className='items'>
-                                {homeAbout.map((val) => {
+                                {homeAbout.map((val,key) => {
                                     return (
-                                        <div className='item flexSB'>
+                                        <div className='item flexSB'  key={val.id}>
                                             <div className='img-fluid'>
                                                 <img src={val.cover} alt='' />
                                             </div>

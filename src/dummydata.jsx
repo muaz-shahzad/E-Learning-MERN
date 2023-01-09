@@ -4,7 +4,7 @@ import img1 from "./assests/images/web-development.png"
 
 export const homeAbout = [
   {
-    id: 1,
+    id: 0,
     cover: "https://img.icons8.com/dotty/80/000000/storytelling.png",
     title: "Online Courses",
     desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
@@ -16,7 +16,7 @@ export const homeAbout = [
     desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
   },
   {
-    id: 1,
+    id: 2,
     cover: "https://img.icons8.com/ios/80/000000/athlete.png",
     title: "Learn with Expert",
     desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
@@ -261,41 +261,49 @@ export const online = [
 ]
 export const team = [
   {
+    id: 0,
     cover: "./images/team/t1.webp",
     name: "Ph.D Adrian Molises",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 1,
     cover: "./images/team/t2.webp",
     name: "Ph.D Arthur MaGregor",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 2,
     cover: "./images/team/t3.webp",
     name: "Ph.D Anna Hanzen",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 3,
     cover: "./images/team/t4.webp",
     name: "Ph.D Brian Wooden",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 4,
     cover: "./images/team/1.png",
     name: "Catherine Wilson",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 5,
     cover: "./images/team/2.png",
     name: "Maria Knopp",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 6,
     cover: "./images/team/3.png",
     name: "Austin Fiden",
     work: "DEVELOPER AND LEAD INSTRUCTOR",
   },
   {
+    id: 7,
     cover: "./images/team/4.png",
     name: "Andrea Levy",
     work: "Psychologist",
