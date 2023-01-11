@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 const CRUD = () => {
   const navigate = useNavigate();
     const addcourse = () => {
-        navigate("/Addcourse")
+        navigate("/homeadmin/Addcourse")
     }
     const updtcourse = () => {
         navigate("/updtcourse")
@@ -57,23 +57,6 @@ const CRUD = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className="col-lg-4">
-                                <div className="card">
-                                    <div className="card-body p-3">
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <div className="">
-                                                    <h5 className="font-weight-bolder text-center  mt-2">
-                                                        <DeleteIcon onClick={dltcourse} style={{ color: "red", fontSize: "40px",cursor: "pointer" }} />
-                                                    </h5>
-                                                    <p className="text-center mb-0 text-uppercase font-weight-bold">Delete Courses</p>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                 </div>
             </div>
         </>

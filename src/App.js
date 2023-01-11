@@ -17,7 +17,7 @@ import HomeAdmin from './Components/HomeAdmin/HomeAdmin';
 import Header from './Components/Client/Header/Header';
 import Home from './Components/Client/Home/Home';
 import Head from './Components/Client/Head/Head';
-
+import axios from 'axios';
 import AboutPage from './Components/Pages/AboutPage';
 import TeamPage from './Components/Pages/TeamPage';
 import ContactPage from './Components/Pages/ContactPage';
@@ -53,6 +53,19 @@ import AdminTable from './Components/AdminPannel/AdminTable';
 import Addcourse from './Components/AdminPannel/AddCourse/Addcourse';
 import Updcours from './Components/AdminPannel/UpdCourse/Updcours';
 import Dltecourse from './Components/AdminPannel/DlteCourse/Dltecourse';
+import C1 from './Components/AdminPannel/AddCourse/Pages/C1';
+import C2 from './Components/AdminPannel/AddCourse/Pages/C2';
+import C3 from './Components/AdminPannel/AddCourse/Pages/C3';
+import C4 from './Components/AdminPannel/AddCourse/Pages/C4';
+import C5 from './Components/AdminPannel/AddCourse/Pages/C5';
+import C6 from './Components/AdminPannel/AddCourse/Pages/C6';
+import C7 from './Components/AdminPannel/AddCourse/Pages/C7';
+import C8 from './Components/AdminPannel/AddCourse/Pages/C8';
+import C9 from './Components/AdminPannel/AddCourse/Pages/C9';
+import C10 from './Components/AdminPannel/AddCourse/Pages/C10';
+import C11 from './Components/AdminPannel/AddCourse/Pages/C11';
+import C12 from './Components/AdminPannel/AddCourse/Pages/C12';
+
 
 
 
@@ -61,7 +74,24 @@ function App() {
   const [user, setLoginUser] = useState({})
   const [admin, setNewadmin] = useState({})
 
+  // const [state, updstate] = useState({
+  //   course_name: "",
+  //   course_id: "",
 
+  // })
+  // const getdata = (id) => {
+  //   axios.get(`http://localhost:9002/Addcourse/${id}`).then(function (response) {
+  //     // updstate({
+  //     //   // course_name: response.body.course_name,
+  //     //   course_id: response.body.course_id,
+  //     // })
+  //     // console.log(Json.strresponse.data+"asss");
+  //     console.log(JSON.stringify(response.data));
+  //   }).catch((e)=>{
+  //     console.log(e);
+  //   })
+
+  // }
   return (
     <>
 
@@ -207,25 +237,63 @@ function App() {
 
 
 
-      
-
-         
-          
-
-       
-
-        
-
-         
-
-        
 
 
 
-         
-          <Route path="/Addcourse" element={<Addcourse />} />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <Route path="/homeadmin/Addcourse" element={<Addcourse />} />
           <Route path="/updtcourse" element={<Updcours />} />
+           //Inter Add category routes
+
+          <Route path='/homeadmin/Addcourse/UI' element={<C1 />} />
+          <Route path='/homeadmin/Addcourse/art' element={<C2 />} />
+          <Route path='/homeadmin/Addcourse/computer' element={<C3 />} />
+          <Route path='/homeadmin/Addcourse/history' element={<C4 />} />
+          <Route path='/homeadmin/Addcourse/software' element={<C5 />} />
+          <Route path='/homeadmin/Addcourse/security' element={<C6 />} />
+          <Route path='/homeadmin/Addcourse/health' element={<C7 />} />
+          <Route path='/homeadmin/Addcourse/market' element={<C8 />} />
+          <Route path='/homeadmin/Addcourse/graphic' element={<C9 />} />
+          <Route path='/homeadmin/Addcourse/music' element={<C10 />} />
+          <Route path='/homeadmin/Addcourse/buisness' element={<C11 />} />
+          <Route path='/homeadmin/Addcourse/web' element={<C12 />} />
+
         </Routes>
+
+
+
+
+
+
+        {/* <Routes>
+        <Route path='/' element={<Adminpage />} />
+        <Route path='/Addcourse' element={<Addcourse />} />
+        <Route path='/updtcourse' element={<Updcours />} />
+
+
+
+      </Routes> */}
+
+
+
+        {/* <button onClick={getdata}>Get Data by id</button> */}
+        {/* <button onClick={() => getdata(6)}>Get Data by id</button> */}
+
       </div>
 
     </>
