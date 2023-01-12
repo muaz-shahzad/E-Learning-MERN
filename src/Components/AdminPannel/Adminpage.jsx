@@ -1,20 +1,47 @@
-import React from "react"
+import React, { useState } from "react"
 import "../AdminPannel/Adminpannel.css"
 import Adminnav from "./Adminnav";
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PersonIcon from '@mui/icons-material/Person';
 import DownloadIcon from '@mui/icons-material/Download';
 import CategoryIcon from '@mui/icons-material/Category';
-
+import { useEffect } from "react";
 import UserTable from "./UserTable";
 import RegisterTable from "./RegisterTable";
 import DownloadTable from "./DownloadTable";
 import CRUD from "./CRUD";
-import TotalCourses from "./TotalCourses";
+import axios from 'axios';
+import TouchAppIcon from '@mui/icons-material/TouchApp';
+import { useNavigate } from 'react-router';
+
+
 
 const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
 
-    // alert(adminName)
+
+
+    const [Registeruser, set_Registeruser] = useState([]);
+    const navigate = useNavigate();
+    const coursesInfo = () => {
+        navigate("/homeadmin/coursesinfo")
+    }
+    useEffect(() => {
+        axios.get(`http://localhost:9002/homeadmin`)
+            .then(response => {
+                const [{ roll, name }] = response.data;
+                // console.log(roll); // will print "1"
+                // console.log(name); // will print "M Muaz Shahzad"
+                const extractedUsers = response.data.map(({ roll, name }) => ({ roll, name }));
+                set_Registeruser(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+    // console.log("Roll: ", Registeruser.roll);
+    // console.log("Name: ", Registeruser.name);
+
+
 
 
     return (
@@ -121,21 +148,49 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                             </div>
                         </div>
                     </div>
+
+                    {/* Course Infor Card */}
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xl-3 col-sm-6 mt-5">
+                                <div className="card">
+                                    <div className="card-body p-3">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="">
+                                                    <h5 className="font-weight-bolder text-center  mt-2">
+                                                        <TouchAppIcon onClick={coursesInfo} style={{ color: "blue", fontSize: "40px", cursor: "pointer" }} />
+                                                    </h5>
+                                                    <p className="text-center mb-0 text-uppercase font-weight-bold">See Courses Info</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                     <div className="row mt-4">
                     </div>
                     <div className="container">
                         <div className="row">
-                            <UserTable />
-                            <RegisterTable />
+                            {/* <UserTable
+                                Registeruser={Registeruser}
+                            /> */}
+                            {/* <RegisterTable
+                                Registeruser={Registeruser}
+                            /> */}
 
                         </div>
                     </div>
                     <div className="row mt-5">
                     </div>
-                    <DownloadTable />
+                    {/* <DownloadTable /> */}
                     <div className="row mt-5">
                     </div>
-                    <TotalCourses />
+                    {/* <TotalCourses /> */}
                     <div className="row mt-5">
                     </div>
                     <CRUD />
@@ -145,6 +200,16 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
 
                 </div>
             </main>
+
+
+            {/* <div>
+                {Registeruser.map((user, index) => (
+                    <div key={index}>
+                        <p>Roll: {user.roll}</p>
+                        <p>Name: {user.name}</p>
+                    </div>
+                ))}
+            </div> */}
         </>
     )
 }

@@ -199,7 +199,7 @@ const UI_UxCourseSchema = new mongoose.Schema({
     category_name: {
         type: String,
         default: "UI",
-        
+
     },
     course_name: String,
     course_img: {
@@ -1088,8 +1088,68 @@ app.post("/homeadmin/Addcourse/web", upload.single("testImage"), (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////////////
 // Get APIs FOR COURSES CATEGORY WISE
 ////////////////////////////////////////////////////////////////////////////////////////
-// Add course Get API
 
+// Get All courses Information 
+app.get('/homeadmin/coursesinfo', (req, res) => {
+
+    let course1 = Course_1.find().exec();
+    let course2 = Course_2.find().exec();
+    let course3 = Course_3.find().exec();
+    let course4 = Course_4.find().exec();
+    let course5 = Course_5.find().exec();
+    let course6 = Course_6.find().exec();
+    let course7 = Course_7.find().exec();
+    let course8 = Course_8.find().exec();
+    let course9 = Course_9.find().exec();
+    let course10 = Course_10.find().exec();
+    let course11 = Course_11.find().exec();
+    let course12 = Course_12.find().exec();
+
+    Promise.all([course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11, course12])
+        .then((data) => {
+            // Combine all data into a single response
+            let response = {
+                course1: data[0],
+                course2: data[1],
+                course3: data[2],
+                course4: data[3],
+                course5: data[4],
+                course6: data[5],
+                course7: data[6],
+                course8: data[7],
+                course9: data[8],
+                course10: data[9],
+                course11: data[10],
+                course12: data[11],
+            };
+
+            // Send response to client
+            res.json(response);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ error: 'Error retrieving data from collections' });
+        });
+})
+
+
+
+
+
+// Get Register User Table Information
+app.get('/homeadmin', (req, res) => {
+
+    User.find({}, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+// Add course Get API
 app.get('/Addcourse/:id', (req, res) => {
     const id = req.params.id;
     Course_1.find({ course_id: id }, function (err, docs) {

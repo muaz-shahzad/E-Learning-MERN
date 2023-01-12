@@ -1,7 +1,9 @@
 import React from 'react'
-import { Downloadcoursedownload } from "../../dummydata"
 
-const UserTable = () => {
+const UserTable = (props) => {
+    console.log("Registeruser => ", props.Registeruser)
+    const UserData = props.Registeruser;
+
     return (
         <>
             <div className="col-lg-6">
@@ -25,16 +27,16 @@ const UserTable = () => {
                                         </thead>
                                         <tbody>
                                             {
-                                                Downloadcoursedownload.map((val, key) => {
+                                                props.Registeruser.map((val, key) => {
                                                     return <tr>
                                                         <td>
                                                             <div className="text-center">
-                                                                <h6 className="text-sm mb-0">{val.userid}</h6>
+                                                                <h6 className="text-sm mb-0">{val.roll}</h6>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div className="text-center">
-                                                                <h6 className="text-sm mb-0">{val.username}</h6>
+                                                                <h6 className="text-sm mb-0">{val.name}</h6>
                                                             </div>
                                                         </td>
                                                         <td className="align-middle text-sm">

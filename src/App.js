@@ -52,7 +52,6 @@ import Adminpage from './Components/AdminPannel/Adminpage';
 import AdminTable from './Components/AdminPannel/AdminTable';
 import Addcourse from './Components/AdminPannel/AddCourse/Addcourse';
 import Updcours from './Components/AdminPannel/UpdCourse/Updcours';
-import Dltecourse from './Components/AdminPannel/DlteCourse/Dltecourse';
 import C1 from './Components/AdminPannel/AddCourse/Pages/C1';
 import C2 from './Components/AdminPannel/AddCourse/Pages/C2';
 import C3 from './Components/AdminPannel/AddCourse/Pages/C3';
@@ -65,6 +64,7 @@ import C9 from './Components/AdminPannel/AddCourse/Pages/C9';
 import C10 from './Components/AdminPannel/AddCourse/Pages/C10';
 import C11 from './Components/AdminPannel/AddCourse/Pages/C11';
 import C12 from './Components/AdminPannel/AddCourse/Pages/C12';
+import COURSESINFO from './Components/AdminPannel/CouresInfo/COURSESINFO';
 
 
 
@@ -257,8 +257,10 @@ function App() {
 
 
           <Route path="/homeadmin/Addcourse" element={<Addcourse />} />
+          <Route path="/homeadmin/coursesinfo" element={<COURSESINFO/>} />
+
           <Route path="/updtcourse" element={<Updcours />} />
-           //Inter Add category routes
+           {/* //Inter Add category routes */}
 
           <Route path='/homeadmin/Addcourse/UI' element={<C1 />} />
           <Route path='/homeadmin/Addcourse/art' element={<C2 />} />
