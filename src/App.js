@@ -65,7 +65,9 @@ import C10 from './Components/AdminPannel/AddCourse/Pages/C10';
 import C11 from './Components/AdminPannel/AddCourse/Pages/C11';
 import C12 from './Components/AdminPannel/AddCourse/Pages/C12';
 import COURSESINFO from './Components/AdminPannel/CouresInfo/COURSESINFO';
-
+import RegisterInfo from './Components/AdminPannel/RegisterUserInfo/Register';
+import UserDownloadInfo from './Components/AdminPannel/UserDownloadInfo/UserDownloadInfo';
+import DownloadCourseInfo from './Components/AdminPannel/DownloadCourses/DownloadCourseInfo';
 
 
 
@@ -258,6 +260,12 @@ function App() {
 
           <Route path="/homeadmin/Addcourse" element={<Addcourse />} />
           <Route path="/homeadmin/coursesinfo" element={<COURSESINFO/>} />
+          <Route path="/homeadmin/registeruser" element={<RegisterInfo/>} />
+          <Route path="/homeadmin/usersinfo" element={<UserDownloadInfo/>} />
+          <Route path="/homeadmin/downloadusers" element={<DownloadCourseInfo/>} />
+
+
+
 
           <Route path="/updtcourse" element={<Updcours />} />
            {/* //Inter Add category routes */}

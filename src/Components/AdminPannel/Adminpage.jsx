@@ -6,9 +6,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import DownloadIcon from '@mui/icons-material/Download';
 import CategoryIcon from '@mui/icons-material/Category';
 import { useEffect } from "react";
-import UserTable from "./UserTable";
-import RegisterTable from "./RegisterTable";
-import DownloadTable from "./DownloadTable";
 import CRUD from "./CRUD";
 import axios from 'axios';
 import TouchAppIcon from '@mui/icons-material/TouchApp';
@@ -25,6 +22,18 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
     const coursesInfo = () => {
         navigate("/homeadmin/coursesinfo")
     }
+
+    const Registerusers = () => {
+        navigate("/homeadmin/registeruser")
+    }
+    
+    const usersinfo = () => {
+        navigate("/homeadmin/usersinfo")
+    }
+    
+    const downloadusers = () => {
+        navigate("/homeadmin/downloadusers")
+    }
     useEffect(() => {
         axios.get(`http://localhost:9002/homeadmin`)
             .then(response => {
@@ -38,8 +47,6 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                 console.log(error);
             });
     }, []);
-    // console.log("Roll: ", Registeruser.roll);
-    // console.log("Name: ", Registeruser.name);
 
 
 
@@ -169,23 +176,60 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-xl-3 col-sm-6 mt-5">
+                                <div className="card">
+                                    <div className="card-body p-3">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="">
+                                                    <h5 className="font-weight-bolder text-center  mt-2">
+                                                        <TouchAppIcon onClick={Registerusers} style={{ color: "blue", fontSize: "40px", cursor: "pointer" }} />
+                                                    </h5>
+                                                    <p className="text-center mb-0 text-uppercase font-weight-bold">Registered User</p>
 
-                        </div>
-                    </div>
-                    <div className="row mt-4">
-                    </div>
-                    <div className="container">
-                        <div className="row">
-                            {/* <UserTable
-                                Registeruser={Registeruser}
-                            /> */}
-                            {/* <RegisterTable
-                                Registeruser={Registeruser}
-                            /> */}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/*  */}
+                            <div className="col-xl-3 col-sm-6 mt-5">
+                                <div className="card">
+                                    <div className="card-body p-3">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="">
+                                                    <h5 className="font-weight-bolder text-center  mt-2">
+                                                        <TouchAppIcon onClick={usersinfo} style={{ color: "blue", fontSize: "40px", cursor: "pointer" }} />
+                                                    </h5>
+                                                    <p className="text-center mb-0 text-uppercase font-weight-bold">User Information</p>
 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/*  */}
+                            <div className="col-xl-3 col-sm-6 mt-5">
+                                <div className="card">
+                                    <div className="card-body p-3">
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <div className="">
+                                                    <h5 className="font-weight-bolder text-center  mt-2">
+                                                        <TouchAppIcon onClick={downloadusers} style={{ color: "blue", fontSize: "40px", cursor: "pointer" }} />
+                                                    </h5>
+                                                    <p className="text-center mb-0 text-uppercase font-weight-bold">Download Courses</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="row mt-5">
                     </div>
                     {/* <DownloadTable /> */}
                     <div className="row mt-5">
@@ -200,16 +244,6 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
 
                 </div>
             </main>
-
-
-            {/* <div>
-                {Registeruser.map((user, index) => (
-                    <div key={index}>
-                        <p>Roll: {user.roll}</p>
-                        <p>Name: {user.name}</p>
-                    </div>
-                ))}
-            </div> */}
         </>
     )
 }

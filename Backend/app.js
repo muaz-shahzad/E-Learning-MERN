@@ -1131,12 +1131,52 @@ app.get('/homeadmin/coursesinfo', (req, res) => {
             res.status(500).json({ error: 'Error retrieving data from collections' });
         });
 })
+// Get Register User  Information
+
+app.get('/homeadmin/registeruser', (req, res) => {
+
+    User.find({}, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+
+// Get User  Information
+app.get('/homeadmin/usersinfo', (req, res) => {
+
+    User.find({}, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
 
 
+// Get Downloadusercourse  Information
+app.get('/homeadmin/downloadusers', (req, res) => {
+
+    User.find({}, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
 
 
-
-// Get Register User Table Information
+// Get homeadmin Information
 app.get('/homeadmin', (req, res) => {
 
     User.find({}, function (err, docs) {

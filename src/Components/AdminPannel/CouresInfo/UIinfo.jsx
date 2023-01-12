@@ -6,6 +6,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const UIinfo = (props) => {
     console.log("C_1 => ", props.course1Data)
+    // console.log("C_1 image => ", props.course1Data[0].course_img)
+
+
     return (
         <>
 
@@ -60,11 +63,16 @@ const UIinfo = (props) => {
                                                             <h6 className="text-sm mb-0"><DeleteIcon style={{ color: "red" }} /></h6>
                                                         </div>
                                                     </td>
+                                                    {/* <img  className='img-fluid' alt='not image' src={`http://localhost:9002/${val.course_img}`} /> */}
+
                                                 </tr>
+
                                             })
                                         }
                                     </tbody>
+
                                 </table>
+
                             </div>
                         </div>
                     </div>

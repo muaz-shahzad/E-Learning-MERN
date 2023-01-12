@@ -41,12 +41,6 @@ const COURSESINFO = () => {
     useEffect(() => {
         axios.get(`http://localhost:9002/homeadmin/coursesinfo`)
             .then(response => {
-                // const [{ roll, name }] = response.data;
-                // console.log(roll); // will print "1"
-                // console.log(name); // will print "M Muaz Shahzad"
-                // const extractedUsers = response.data.map(({ roll, name }) => ({ roll, name }));
-                // set_CoursesInfo(extractedUsers);
-
                 const extractedCourses = Object.values(response.data);
                 set_course1Data(extractedCourses[0]);
                 set_course2Data(extractedCourses[1]);
@@ -65,19 +59,6 @@ const COURSESINFO = () => {
                 console.log(error);
             });
     }, []);
-
-    console.log("Course 1 ", course1Data);
-    console.log("Course 2 ", course2Data);
-    console.log("Course 3 ", course3Data);
-    console.log("Course 4 ", course4Data);
-    console.log("Course 5 ", course5Data);
-    console.log("Course 6 ", course6Data);
-    console.log("Course 7 ", course7Data);
-    console.log("Course 8 ", course8Data);
-    console.log("Course 9 ", course9Data);
-    console.log("Course 10 ", course10Data);
-    console.log("Course 11 ", course11Data);
-    console.log("Course 12 ", course12Data);
     return (
         <>
             <div className="min-height-300 bg-primary position-absolute w-100">
@@ -110,12 +91,12 @@ const COURSESINFO = () => {
                         </div>
                         <div className='row'>
                             <div className='col-lg-6'>
-                                <SEinfo 
+                                <SEinfo
                                     course5Data={course5Data}
                                 />
                             </div>
                             <div className='col-lg-6'>
-                                <Securityinfo 
+                                <Securityinfo
                                     course6Data={course6Data}
                                 />
                             </div>
@@ -123,12 +104,12 @@ const COURSESINFO = () => {
                         </div>
                         <div className='row'>
                             <div className='col-lg-6'>
-                                <Healthinfo 
+                                <Healthinfo
                                     course7Data={course7Data}
                                 />
                             </div>
                             <div className='col-lg-6'>
-                                <Markinfo 
+                                <Markinfo
                                     course8Data={course8Data}
                                 />
 
@@ -136,25 +117,25 @@ const COURSESINFO = () => {
                         </div>
                         <div className='row'>
                             <div className='col-lg-6'>
-                                <Graphicinfo 
+                                <Graphicinfo
                                     course9Data={course9Data}
                                 />
                             </div>
                             <div className='col-lg-6'>
-                                <Musicinfo 
+                                <Musicinfo
                                     course10Data={course10Data}
                                 />
                             </div>
                         </div>
                         <div className='row'>
                             <div className='col-lg-6'>
-                                <Buisnessinfo 
+                                <Buisnessinfo
                                     course11Data={course11Data}
 
                                 />
                             </div>
                             <div className='col-lg-6'>
-                                <Webinfo 
+                                <Webinfo
                                     course12Data={course12Data}
 
                                 />
