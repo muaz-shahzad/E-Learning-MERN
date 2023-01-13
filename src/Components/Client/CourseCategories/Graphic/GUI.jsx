@@ -1,10 +1,10 @@
 import * as React from 'react';
-
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GUICourseCard from './GUICourseCard';
 
 
@@ -13,7 +13,18 @@ function GUI() {
 
     const navigate = useNavigate();
 
+    const [GUIcourse, set_GUIcourse] = useState([]);
 
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/graphic`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_GUIcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
     const Select_img = (id) => {
@@ -39,14 +50,13 @@ function GUI() {
                             <h2 className="fw-bold">Graphic Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            GUIcourse.map((val, key) => {
                                 return <GUICourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                    keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
-
                                 />
                             })
                         }

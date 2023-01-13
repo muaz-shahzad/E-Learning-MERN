@@ -34,11 +34,9 @@ const Features = () => {
             <Col lg="4" md="6" key={index}>
               <div className="single__feature text-center px-4">
                 <h2 className="mb-3">
-                  {/* <i className={item.icon}></i> */}
                   {item.icon}
-                  {/* <h2>{item.icon}</h2> */}
                 </h2>
-                <h6>{item.title}</h6>
+                <h4>{item.title}</h4>
                 <p >{item.desc}</p>
               </div>
             </Col>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { Container, Row, Col } from "reactstrap";
-import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BCourseCard from './BCourseCard';
 
 
@@ -12,6 +12,19 @@ import BCourseCard from './BCourseCard';
 function B() {
 
     const navigate = useNavigate();
+
+    const [Bcourse, set_Bcourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/buisness`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_Bcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
 
@@ -37,12 +50,12 @@ function B() {
                             <h2 className="fw-bold">Business Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            Bcourse.map((val, key) => {
                                 return <BCourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                    keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />
@@ -57,4 +70,3 @@ function B() {
 }
 
 export default B
-    

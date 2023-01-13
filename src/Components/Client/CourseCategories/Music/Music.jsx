@@ -2,9 +2,10 @@ import * as React from 'react';
 
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MusicCourseCard from './MusicCourseCard';
 
 
@@ -12,6 +13,19 @@ import MusicCourseCard from './MusicCourseCard';
 function Music() {
 
     const navigate = useNavigate();
+
+    const [musiccourse, set_musiccourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/music`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_musiccourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
 
@@ -38,12 +52,12 @@ function Music() {
                             <h2 className="fw-bold">Music Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            musiccourse.map((val, key) => {
                                 return <MusicCourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                     keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />

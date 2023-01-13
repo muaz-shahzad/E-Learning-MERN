@@ -53,7 +53,7 @@ function Aboutwin() {
                                             interest in learning. However, achieving this objective shouldn’t cost a fortune to a parent.
                                         </p>
                                         <ul className="global-list">
-                                            <p> WinQuest provides Live classes which are affordable & involve open communication between the teacher and student.</p>
+                                            <p> We provides Live classes which are affordable & involve open communication between the teacher and student.</p>
                                             <p> Every learning session will be on a path leading to the child’s goal.</p>
                                         </ul>
                                     </div>

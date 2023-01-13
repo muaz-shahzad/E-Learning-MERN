@@ -2,15 +2,31 @@ import * as React from 'react';
 
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WebcourseCard from './WebcourseCard';
 
 
 
 function Web() {
+     
     const navigate = useNavigate();
+
+    const [webcourse, set_webcourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/web`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_webcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
 
 
 
@@ -40,12 +56,12 @@ function Web() {
                             <h2 className="fw-bold">Web Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            webcourse.map((val, key) => {
                                 return <WebcourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                        keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />

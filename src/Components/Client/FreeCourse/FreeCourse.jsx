@@ -43,6 +43,7 @@ const freeCourseData = [
 ];
 
 const FreeCourse = () => {
+
   return (
     <section>
       <Container>
@@ -52,7 +53,7 @@ const FreeCourse = () => {
           </Col>
 
           {freeCourseData.map((item) => (
-            <Col lg="3" md="4" className="mb-4" key={item.id}>
+            <Col lg="3" md="4" className="mb-1" key={item.id}>
               <FreeCourseCard item={item} />
             </Col>
           ))}

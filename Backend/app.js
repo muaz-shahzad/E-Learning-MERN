@@ -1175,6 +1175,457 @@ app.get('/homeadmin/downloadusers', (req, res) => {
     })
 })
 
+//Get total course number of each category
+app.get('/courses', (req, res) => {
+    let course1 = Course_1.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course2 = Course_2.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course3 = Course_3.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course4 = Course_4.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course5 = Course_5.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course6 = Course_6.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course7 = Course_7.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course8 = Course_8.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course9 = Course_9.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course10 = Course_10.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course11 = Course_11.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    let course12 = Course_12.aggregate([
+        {
+            $group: {
+                _id: "$category_name",
+                totalCourses: { $sum: 1 }
+            }
+        }
+    ]);
+    Promise.all([course1, course2, course3,course4,course5,course6,course7,course8,course9,course10,course11,course12])
+        .then((data) => {
+            // Combine all data into a single response
+            let response = {
+                course1: data[0],
+                course2: data[1],
+                course3: data[2],
+                course4: data[3],
+                course5: data[4],
+                course6: data[5],
+                course7: data[6],
+                course8: data[7],
+                course9: data[8],
+                course10: data[9],
+                course11: data[10],
+                course12: data[11],
+
+            };
+
+            // Send response to client
+            res.json(response);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({ error: 'Error retrieving data from collections' });
+        });
+});
+/////////////////////////////////////////////////////////////////////////
+// Get Category wise courses here below
+////////////////////////////////////////////////////////////////////////
+
+//Get Ui Courses
+app.get('/courses/UI' ,(req,res)=>{
+    Course_1.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get art Courses
+app.get('/courses/art' ,(req,res)=>{
+    Course_2.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+
+//Get computer Courses
+app.get('/courses/computer' ,(req,res)=>{
+    Course_3.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+
+//Get history Courses
+app.get('/courses/history' ,(req,res)=>{
+    Course_4.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+
+//Get software Courses
+app.get('/courses/software' ,(req,res)=>{
+    Course_5.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get security Courses
+app.get('/courses/security' ,(req,res)=>{
+    Course_6.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get health Courses
+app.get('/courses/health' ,(req,res)=>{
+    Course_7.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get market Courses
+app.get('/courses/market' ,(req,res)=>{
+    Course_8.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get graphic Courses
+app.get('/courses/graphic' ,(req,res)=>{
+    Course_9.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get music Courses
+app.get('/courses/music' ,(req,res)=>{
+    Course_10.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get buisness Courses
+app.get('/courses/buisness' ,(req,res)=>{
+    Course_11.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+//Get web Courses
+app.get('/courses/web' ,(req,res)=>{
+    Course_12.find({}, function (err,docs){
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Sucessfull");
+        }
+    })
+})
+
+
+// Get UI courses Detail with use params
+app.get('/courses/UI/:id', (req, res) => {
+    const id = req.params.id;
+    Course_1.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get art courses Detail with use params
+app.get('/courses/art/:id', (req, res) => {
+    const id = req.params.id;
+    Course_2.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+// Get computer courses Detail with use params
+app.get('/courses/computer/:id', (req, res) => {
+    const id = req.params.id;
+    Course_3.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+// Get history courses Detail with use params
+app.get('/courses/history/:id', (req, res) => {
+    const id = req.params.id;
+    Course_4.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get software courses Detail with use params
+app.get('/courses/software/:id', (req, res) => {
+    const id = req.params.id;
+    Course_5.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get security courses Detail with use params
+app.get('/courses/security/:id', (req, res) => {
+    const id = req.params.id;
+    Course_6.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get health courses Detail with use params
+app.get('/courses/health/:id', (req, res) => {
+    const id = req.params.id;
+    Course_7.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get market courses Detail with use params
+app.get('/courses/market/:id', (req, res) => {
+    const id = req.params.id;
+    Course_8.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get graphic courses Detail with use params
+app.get('/courses/graphic/:id', (req, res) => {
+    const id = req.params.id;
+    Course_9.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get music courses Detail with use params
+app.get('/courses/music/:id', (req, res) => {
+    const id = req.params.id;
+    Course_10.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get buisness courses Detail with use params
+app.get('/courses/buisness/:id', (req, res) => {
+    const id = req.params.id;
+    Course_11.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+// Get web courses Detail with use params
+app.get('/courses/web/:id', (req, res) => {
+    const id = req.params.id;
+    Course_12.find({ course_id: id }, function (err, docs) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(docs)
+            console.log("Suceesfull");
+        }
+    });
+})
+
+
+
+
+
+
+
+
 
 // Get homeadmin Information
 app.get('/homeadmin', (req, res) => {

@@ -24,12 +24,6 @@ const Header = () => {
               <Link to='/team'>Team</Link>
             </li>
             <li>
-              <Link to='/pricing'>Pricing</Link>
-            </li>
-            <li>
-              <Link to='/journal'>Journal</Link>
-            </li>
-            <li>
               <Link to='/contact'>Contact</Link>
             </li>
           </ul>
@@ -41,8 +35,8 @@ const Header = () => {
           </button>
         </nav>
       </header>
-     
-     
+
+
     </>
   )
 }

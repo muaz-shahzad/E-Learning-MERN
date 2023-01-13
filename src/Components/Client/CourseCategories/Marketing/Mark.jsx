@@ -1,11 +1,11 @@
 import * as React from 'react';
-
+import MarkCourseCard from './MarkCourseCard';
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
-import MarkCourseCard from './MarkCourseCard';
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -13,13 +13,26 @@ function Mark() {
 
     const navigate = useNavigate();
 
+    const [markcourse, set_markcourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/market`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_markcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
 
 
 
     const Select_img = (id) => {
 
         navigate(`/courses/market/${id}`);
-       
+
     }
 
 
@@ -36,12 +49,12 @@ function Mark() {
                             <h2 className="fw-bold">Marketing Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            markcourse.map((val, key) => {
                                 return <MarkCourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                    keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />
@@ -56,4 +69,3 @@ function Mark() {
 }
 
 export default Mark
-    

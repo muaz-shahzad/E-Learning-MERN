@@ -10,7 +10,7 @@ const MarkCourseCard = (props) => {
         <Col lg="3" md="4" className="mt-3 mb-4" >
         <div className="single__free__course">
             <div className="uifree__course__img mb-4" id={props.id}>
-                <img src={props.imgUrl} alt="" className="w-100" id={props.id}
+                <img src={`http://localhost:9002/${props.imgUrl}`} alt="" className="w-100" id={props.id}
                     onClick={() => {
                         props.Selected_Image(props.id)
                     }}

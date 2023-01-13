@@ -1,10 +1,10 @@
 import * as React from 'react';
-
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import HistoryCourseCard from './HistoryCourseCard';
 
 
@@ -12,6 +12,20 @@ import HistoryCourseCard from './HistoryCourseCard';
 function History() {
 
     const navigate = useNavigate();
+
+    const [Historycourse, set_Historycourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/history`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_Historycourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+
 
 
 
@@ -38,12 +52,12 @@ function History() {
                             <h2 className="fw-bold">History Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            Historycourse.map((val, key) => {
                                 return <HistoryCourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                   keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />

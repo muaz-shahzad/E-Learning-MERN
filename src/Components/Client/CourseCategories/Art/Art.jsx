@@ -1,10 +1,10 @@
 import * as React from 'react';
-
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ArtCourseCard from './ArtCourseCard';
 
 
@@ -12,7 +12,18 @@ import ArtCourseCard from './ArtCourseCard';
 function Art() {
 
     const navigate = useNavigate();
+    const [Artcourse, set_Artcourse] = useState([]);
 
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/art`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_Artcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
 
@@ -20,13 +31,6 @@ function Art() {
 
         navigate(`/courses/art/${id}`);
     }
-
-
-
-
-
-
-
     return (
         <>
             <section>
@@ -37,12 +41,12 @@ function Art() {
                             <h2 className="fw-bold">Art Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            Artcourse.map((val, key) => {
                                 return <ArtCourseCard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                    keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />

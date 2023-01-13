@@ -2,12 +2,27 @@ import React from 'react'
 import Scoursecard from './Scoursecard';
 import { Container, Row, Col } from "reactstrap";
 import "../../CourseCategories/UI/UI.css"
-import { UIData } from '../../../../dummydata';
-import { useNavigate } from "react-router-dom"
-import { useState } from 'react'
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SE() {
+    
     const navigate = useNavigate();
+
+    const [SEcourse, set_SEcourse] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://localhost:9002/courses/software`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_SEcourse(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
 
 
     const Select_img = (id) => {
@@ -25,12 +40,12 @@ function SE() {
                             <h2 className="fw-bold">SE Courses</h2>
                         </Col>
                         {
-                            UIData.map((val, key) => {
+                            SEcourse.map((val, key) => {
                                 return <Scoursecard
-                                    key={key}
-                                    id={val.key}
-                                    imgUrl={val.imgUrl}
-                                    title={val.title}
+                                       keyui={key}
+                                    id={val.course_id}
+                                    imgUrl={val.course_img}
+                                    title={val.course_name}
                                     Selected_Image={Select_img}
 
                                 />
