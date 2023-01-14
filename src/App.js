@@ -200,40 +200,179 @@ function App() {
           }
           />
           <Route path='/courses/UI' element={<UIUXPage />} />
-          <Route path='/courses/UI/:id' element={<CoursesDetailUI />} />
+          <Route
+            path='/courses/UI/:id' element={
+              user && user._id ?
+                (
+                  <CoursesDetailUI
+                    setLoginUser={setLoginUser}
+                    Username={user.name}
+
+                  />
+                ) : (
+                  <Navigate replace to="/" />
+                )
+
+            }
+
+          />
 
           <Route path='/courses/art' element={<ArtPage />} />
-          <Route path='/courses/art/:id' element={<ArtCoursesDetail />} />
+          <Route path='/courses/art/:id' element={
+            user && user._id ?
+              (
+                <ArtCoursesDetail
+                  setLoginUser={setLoginUser}
+                  Username={user.name}
+
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+
+          />
 
           <Route path='/courses/computer' element={<ComputerPage />} />
-          <Route path='/courses/computer/:id' element={<CSCoursesDetail />} />
+          <Route path='/courses/computer/:id' element={
+            user && user._id ?
+              (
+                <CSCoursesDetail
+                  setLoginUser={setLoginUser}
+                  Username={user.name}
 
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
           <Route path='/courses/history' element={<HistoryPage />} />
-          <Route path='/courses/history/:id' element={<HistoryCoursesDetail />} />
+          <Route path='/courses/history/:id' element={
+            user && user._id ?
+              (
+                <HistoryCoursesDetail
+                  setLoginUser={setLoginUser}
+                  Username={user.name}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/software' element={<SEPage />} />
-          <Route path='/courses/software/:id' element={<CourseDetailSE />} />
+          <Route path='/courses/software/:id' element={
+            user && user._id ?
+              (
+                <CourseDetailSE
+                  setLoginUser={setLoginUser}
+                  Username={user.name}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/security' element={<InfoSecurityPage />} />
-          <Route path='/courses/security/:id' element={<SecurCoursesDetail />} />
+          <Route path='/courses/security/:id' element={
+            user && user._id ?
+              (
+                <SecurCoursesDetail
+                  setLoginUser={setLoginUser}
+                  Username={user.name}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/health' element={<HealthPage />} />
-          <Route path='/courses/health/:id' element={<HealthCoursesDetailUI />} />
+          <Route path='/courses/health/:id' element={
+            user && user._id ?
+              (
+                <HealthCoursesDetailUI setLoginUser={setLoginUser}
+                  Username={user.name}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/market' element={<MarketingPage />} />
-          <Route path='/courses/market/:id' element={<MarkCoursesDetail />} />
+          <Route path='/courses/market/:id' element={
+            user && user._id ?
+              (
+                <MarkCoursesDetail
+                  Username={user.name}
+                  Email={user.email}
+                  userid={user._id}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/graphic' element={<GraphicPage />} />
-          <Route path='/courses/graphic/:id' element={<GCoursesDetail />} />
+          <Route path='/courses/graphic/:id' element={
+            user && user._id ?
+              (
+                <GCoursesDetail Username={user.name}
+                  Email={user.email}
+                  userid={user._id}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/music' element={<MusicPage />} />
-          <Route path='/courses/music/:id' element={<MusicCoursesDetail />} />
+          <Route path='/courses/music/:id' element={
+            user && user._id ?
+              (
+                <MusicCoursesDetail Username={user.name}
+                  Email={user.email}
+                  userid={user._id}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
           <Route path='/courses/buisness' element={<BusinessAdministrationPage />} />
-          <Route path='/courses/buisness/:id' element={<BCoursesDetail />} />
+          <Route path='/courses/buisness/:id' element={
+            user && user._id ?
+              (
+                <BCoursesDetail Username={user.name}
+                  Email={user.email}
+                  userid={user._id}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
+
 
           <Route path='/courses/web' element={<WebPage />} />
-          <Route path='/courses/web/:id' element={<CourseDetailW />} />
+          <Route path='/courses/web/:id' element={
+            user && user._id ?
+              (
+                <CourseDetailW Username={user.name}
+                  Email={user.email}
+                  userid={user._id}
+                />
+              ) : (
+                <Navigate replace to="/" />
+              )
+          }
+          />
 
 
 
@@ -259,16 +398,16 @@ function App() {
 
 
           <Route path="/homeadmin/Addcourse" element={<Addcourse />} />
-          <Route path="/homeadmin/coursesinfo" element={<COURSESINFO/>} />
-          <Route path="/homeadmin/registeruser" element={<RegisterInfo/>} />
-          <Route path="/homeadmin/usersinfo" element={<UserDownloadInfo/>} />
-          <Route path="/homeadmin/downloadusers" element={<DownloadCourseInfo/>} />
+          <Route path="/homeadmin/coursesinfo" element={<COURSESINFO />} />
+          <Route path="/homeadmin/registeruser" element={<RegisterInfo />} />
+          <Route path="/homeadmin/usersinfo" element={<UserDownloadInfo />} />
+          <Route path="/homeadmin/downloadusers" element={<DownloadCourseInfo />} />
 
 
 
 
           <Route path="/updtcourse" element={<Updcours />} />
-           {/* //Inter Add category routes */}
+          {/* //Inter Add category routes */}
 
           <Route path='/homeadmin/Addcourse/UI' element={<C1 />} />
           <Route path='/homeadmin/Addcourse/art' element={<C2 />} />

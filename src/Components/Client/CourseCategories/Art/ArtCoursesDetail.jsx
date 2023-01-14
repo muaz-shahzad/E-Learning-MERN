@@ -15,7 +15,9 @@ function ArtCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail Art' />
-            <ArtCourseInfo/>
+            <ArtCourseInfo
+                fusername={Username}
+            />
             <Footer />
         </>
     )

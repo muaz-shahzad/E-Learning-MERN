@@ -16,7 +16,10 @@ function GCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail GUI' />
-            <GCourseInfo/>
+            <GCourseInfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

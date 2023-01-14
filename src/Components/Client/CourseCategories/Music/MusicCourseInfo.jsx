@@ -7,19 +7,27 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const MusicCourseInfo = () => {
+const MusicCourseInfo = ({ fusername }) => {
     const { id } = useParams();
     console.log("Detail prams id", id)
 
     const navigate = useNavigate();
 
     const [Musicoursedetail, set_Musicoursedetail] = useState([]);
+    const [MusicFeeback, set_MusicFeeback] = useState([]);
+
+    const [feedback, setFeedback] = useState('');
+    function handleChange(event) {
+
+        setFeedback(event.target.value);
+    }
 
     useEffect(() => {
         axios.get(`http://localhost:9002/courses/music/${id}`)
             .then(response => {
-                const extractedUsers = response.data;
-                set_Musicoursedetail(extractedUsers);
+                const { course, feedback } = response.data;
+                set_Musicoursedetail(course);
+                set_MusicFeeback(feedback)
 
             })
             .catch(error => {
@@ -27,6 +35,17 @@ const MusicCourseInfo = () => {
             });
     }, []);
     console.log(Musicoursedetail)
+    function handleSubmit() {
+        const course_id = Musicoursedetail[0].course_id;
+        const category_id = Musicoursedetail[0].category_id;
+        const data = { feedback, course_id, category_id, fusername };
+        axios.post(`http://localhost:9002/courses/music/${id}`, data)
+            .then(res => {
+                alert(res.data.message)
+            })
+        setFeedback('')
+    }
+
     return (
         <>
            <div className="sg-section">
@@ -66,19 +85,26 @@ const MusicCourseInfo = () => {
                                                         </div>
                                                         <div className="tab-pane fade mt-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                                             <h6 style={{ fontSize: "22px" }}>Student Feedback</h6>
-                                                            <div>
-                                                                <p>
-                                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores similique, porro beatae ratione asperiores praesentium quisquam. Quidem, magnam ut molestiae vero mollitia dicta, facere, provident temporibus earum iste debitis praesentium?
-                                                                </p>
-                                                            </div>
+                                                            {
+                                                                MusicFeeback.map((val, key) => {
+                                                                    return <div id={key}>
+                                                                        <h6>{val.user_name}</h6>
+                                                                        <ol style={{ fontWeight: "300", fontFamily: "Poppins, sans-serif" }}>
+                                                                            <li>
+                                                                                {val.feedback}
+                                                                            </li>
+                                                                        </ol>
+                                                                    </div>
+
+
+                                                                })
+                                                            }
                                                         </div>
                                                         <div className="tab-pane fade mt-4" id="comments" role="tabpanel" aria-labelledby="comments-tab">
                                                             <h6 style={{ fontSize: "22px" }}>Leave a Comment</h6>
                                                             <div className="comments-form">
-                                                                <form action="#">
-                                                                    <textarea name="message" className="form-control" required="required" rows="7" placeholder="Write a comment..."></textarea>
-                                                                    <button type="submit" className="btn btn-primary">Submit</button>
-                                                                </form>
+                                                                <textarea value={feedback} className="form-control" required="required" rows="7" placeholder="Write a comment..." onChange={handleChange} />
+                                                                <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
                                                             </div>
                                                         </div>
                                                         <div className='text-end'>

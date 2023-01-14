@@ -20,7 +20,9 @@ function CoursesDetailUI({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail UI' />
-            <CourseInfo/>
+            <CourseInfo
+                 fusername={Username}
+            />
             <Footer />
         </>
     )

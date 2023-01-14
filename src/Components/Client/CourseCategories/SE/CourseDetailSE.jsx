@@ -15,7 +15,10 @@ function CourseDetailSE ({setLoginUser, Username }){
             />
             <Header />
             <Back title='Courses Detail SE' />
-            <SEcourseinfo/>
+            <SEcourseinfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

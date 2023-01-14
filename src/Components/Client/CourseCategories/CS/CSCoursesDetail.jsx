@@ -16,7 +16,10 @@ function CSCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail Computer' />
-            <CSCourseInfo/>
+            <CSCourseInfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

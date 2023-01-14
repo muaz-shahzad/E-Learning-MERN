@@ -591,7 +591,117 @@ const Web_CourseSchema = new mongoose.Schema({
 })
 const Course_12 = new mongoose.model("Web", Web_CourseSchema)
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
+// UI Feeback collection
+const UI_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const UI_Feed = new mongoose.model("UI_Feed", UI_Feedback)
+
+// Art Feeback collection
+const Art_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Art_Feed = new mongoose.model("Art_Feed", Art_Feedback)
+
+// CS Feeback collection
+const CS_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const CS_Feed = new mongoose.model("CS_Feed", CS_Feedback)
+
+// History Feeback collection
+const History_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const History_Feed = new mongoose.model("History_Feed", History_Feedback)
+
+// SE Feeback collection
+const SE_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const SE_Feed = new mongoose.model("SE_Feed", SE_Feedback)
+
+// InfoSecure Feeback collection
+const Info_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Info_Feed = new mongoose.model("Info_Feed", Info_Feedback)
+
+// Health Feeback collection
+const Health_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Health_Feed = new mongoose.model("Health_Feed", Health_Feedback)
+
+// marketing Feeback collection
+const Marketing_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Mark_Feed = new mongoose.model("Mark_Feed", Marketing_Feedback)
+
+// Graphic Feeback collection
+const Graphic_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Graphic_Feed = new mongoose.model("Graphic_Feed", Graphic_Feedback)
+
+// Music Feeback collection
+const Music_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Music_Feed = new mongoose.model("Music_Feed", Music_Feedback)
+
+// Buisness Feeback collection
+const Buisness_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Buisness_Feed = new mongoose.model("Buisness_Feed", Buisness_Feedback)
+
+// Web Feeback collection
+const Web_Feedback = new mongoose.Schema({
+    course_id: Number,
+    user_name: String,//lis user nay login kia hua
+    feedback: String//input day ga
+
+})
+const Web_Feed = new mongoose.model("Web_Feed", Web_Feedback)
+
+//-------------------------------------------------------------------------------------------------------------------------------
 
 ////////////////////////////////////////////////////////////////////////////////////////
 // POST  APIs FOR ADD COURSES CATEGORY WISE
@@ -1083,10 +1193,238 @@ app.post("/homeadmin/Addcourse/web", upload.single("testImage"), (req, res) => {
 
 
 
+// ---------------------------------------------------------------------------------------------------------------------------------------------------
+//UI feedback post request
+app.post("/courses/UI/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const ui_Feed = new UI_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    ui_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For UI Course Succesfully Send" });
+        }
+    });
+})
 
+//Art feedback post request
+app.post("/courses/art/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const art_Feed = new Art_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    art_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Art Course Succesfully Send" });
+        }
+    });
+})
 
+//CS feedback post request
+app.post("/courses/computer/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const cs_Feed = new CS_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    cs_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For CS course Succesfully Send" });
+        }
+    });
+})
+
+//History feedback post request
+app.post("/courses/history/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const history_Feed = new History_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    history_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For History Course Succesfully Send" });
+        }
+    });
+})
+
+//SE feedback post request
+app.post("/courses/software/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const se_Feed = new SE_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    se_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Software Course Succesfully Send" });
+        }
+    });
+})
+
+//Info feedback post request
+app.post("/courses/security/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const secure_Feed = new Info_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    secure_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Security Course Succesfully Send" });
+        }
+    });
+})
+
+//Health feedback post request
+app.post("/courses/health/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const health_Feed = new Health_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    health_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Health Course Succesfully Send" });
+        }
+    });
+})
+
+//Marketing feedback post request
+app.post("/courses/market/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const mark_Feed = new Mark_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    mark_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Marketing Course Succesfully Send" });
+        }
+    });
+})
+
+//Graphic Design feedback post request
+app.post("/courses/graphic/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const graphic_Feed = new Graphic_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    graphic_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Graphic Course Succesfully Send" });
+        }
+    });
+})
+
+//Music feedback post request
+app.post("/courses/music/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const music_Feed = new Music_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    music_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Music Course Succesfully Send" });
+        }
+    });
+})
+
+//Buisness feedback post request
+app.post("/courses/buisness/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const buisness_Feed = new Buisness_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    buisness_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Buisness Course Succesfully Send" });
+        }
+    });
+})
+
+//Web feedback post request
+app.post("/courses/web/:id", (req, res) => {
+    const { id } = req.params;
+    const { fusername, feedback } = req.body;
+    const web_Feed = new Web_Feed({
+        course_id: id,
+        user_name: fusername,
+        feedback
+    });
+    web_Feed.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            console.log(req.body)
+            res.send({ message: "Feedback For Web Course Succesfully Send" });
+        }
+    });
+})
+//.-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////
-// Get APIs FOR COURSES CATEGORY WISE
+// Get APIs FOR COURSES 
 ////////////////////////////////////////////////////////////////////////////////////////
 
 // Get All courses Information 
@@ -1273,7 +1611,7 @@ app.get('/courses', (req, res) => {
             }
         }
     ]);
-    Promise.all([course1, course2, course3,course4,course5,course6,course7,course8,course9,course10,course11,course12])
+    Promise.all([course1, course2, course3, course4, course5, course6, course7, course8, course9, course10, course11, course12])
         .then((data) => {
             // Combine all data into a single response
             let response = {
@@ -1300,13 +1638,15 @@ app.get('/courses', (req, res) => {
             res.status(500).json({ error: 'Error retrieving data from collections' });
         });
 });
+
+
 /////////////////////////////////////////////////////////////////////////
 // Get Category wise courses here below
 ////////////////////////////////////////////////////////////////////////
 
 //Get Ui Courses
-app.get('/courses/UI' ,(req,res)=>{
-    Course_1.find({}, function (err,docs){
+app.get('/courses/UI', (req, res) => {
+    Course_1.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1317,8 +1657,8 @@ app.get('/courses/UI' ,(req,res)=>{
     })
 })
 //Get art Courses
-app.get('/courses/art' ,(req,res)=>{
-    Course_2.find({}, function (err,docs){
+app.get('/courses/art', (req, res) => {
+    Course_2.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1330,8 +1670,8 @@ app.get('/courses/art' ,(req,res)=>{
 })
 
 //Get computer Courses
-app.get('/courses/computer' ,(req,res)=>{
-    Course_3.find({}, function (err,docs){
+app.get('/courses/computer', (req, res) => {
+    Course_3.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1343,8 +1683,8 @@ app.get('/courses/computer' ,(req,res)=>{
 })
 
 //Get history Courses
-app.get('/courses/history' ,(req,res)=>{
-    Course_4.find({}, function (err,docs){
+app.get('/courses/history', (req, res) => {
+    Course_4.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1356,8 +1696,8 @@ app.get('/courses/history' ,(req,res)=>{
 })
 
 //Get software Courses
-app.get('/courses/software' ,(req,res)=>{
-    Course_5.find({}, function (err,docs){
+app.get('/courses/software', (req, res) => {
+    Course_5.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1368,8 +1708,8 @@ app.get('/courses/software' ,(req,res)=>{
     })
 })
 //Get security Courses
-app.get('/courses/security' ,(req,res)=>{
-    Course_6.find({}, function (err,docs){
+app.get('/courses/security', (req, res) => {
+    Course_6.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1380,8 +1720,8 @@ app.get('/courses/security' ,(req,res)=>{
     })
 })
 //Get health Courses
-app.get('/courses/health' ,(req,res)=>{
-    Course_7.find({}, function (err,docs){
+app.get('/courses/health', (req, res) => {
+    Course_7.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1392,8 +1732,8 @@ app.get('/courses/health' ,(req,res)=>{
     })
 })
 //Get market Courses
-app.get('/courses/market' ,(req,res)=>{
-    Course_8.find({}, function (err,docs){
+app.get('/courses/market', (req, res) => {
+    Course_8.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1404,8 +1744,8 @@ app.get('/courses/market' ,(req,res)=>{
     })
 })
 //Get graphic Courses
-app.get('/courses/graphic' ,(req,res)=>{
-    Course_9.find({}, function (err,docs){
+app.get('/courses/graphic', (req, res) => {
+    Course_9.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1416,8 +1756,8 @@ app.get('/courses/graphic' ,(req,res)=>{
     })
 })
 //Get music Courses
-app.get('/courses/music' ,(req,res)=>{
-    Course_10.find({}, function (err,docs){
+app.get('/courses/music', (req, res) => {
+    Course_10.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1428,8 +1768,8 @@ app.get('/courses/music' ,(req,res)=>{
     })
 })
 //Get buisness Courses
-app.get('/courses/buisness' ,(req,res)=>{
-    Course_11.find({}, function (err,docs){
+app.get('/courses/buisness', (req, res) => {
+    Course_11.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1440,8 +1780,8 @@ app.get('/courses/buisness' ,(req,res)=>{
     })
 })
 //Get web Courses
-app.get('/courses/web' ,(req,res)=>{
-    Course_12.find({}, function (err,docs){
+app.get('/courses/web', (req, res) => {
+    Course_12.find({}, function (err, docs) {
         if (err) {
             console.log(err);
         }
@@ -1453,168 +1793,240 @@ app.get('/courses/web' ,(req,res)=>{
 })
 
 
-// Get UI courses Detail with use params
+// Get UI courses Detail & Feedback with use params
 app.get('/courses/UI/:id', (req, res) => {
     const id = req.params.id;
-    Course_1.find({ course_id: id }, function (err, docs) {
+    Course_1.find({ course_id: id }, (err, course) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            UI_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get art courses Detail with use params
+// Get art courses Detail & Feedback with use params
 app.get('/courses/art/:id', (req, res) => {
     const id = req.params.id;
-    Course_2.find({ course_id: id }, function (err, docs) {
+    Course_2.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Art_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
-// Get computer courses Detail with use params
+// Get computer courses Detail & Feedback with use params
 app.get('/courses/computer/:id', (req, res) => {
     const id = req.params.id;
-    Course_3.find({ course_id: id }, function (err, docs) {
+    Course_3.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            CS_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
-// Get history courses Detail with use params
+// Get history courses Detail & Feedback with use params
 app.get('/courses/history/:id', (req, res) => {
     const id = req.params.id;
-    Course_4.find({ course_id: id }, function (err, docs) {
+    Course_4.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            History_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get software courses Detail with use params
+// Get software courses Detail & Feedback with use params
 app.get('/courses/software/:id', (req, res) => {
     const id = req.params.id;
-    Course_5.find({ course_id: id }, function (err, docs) {
+    Course_5.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            SE_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get security courses Detail with use params
+// Get security courses Detail & Feedback with use params
 app.get('/courses/security/:id', (req, res) => {
     const id = req.params.id;
-    Course_6.find({ course_id: id }, function (err, docs) {
+    Course_6.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Info_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get health courses Detail with use params
+// Get health courses Detail & Feedback with use params
 app.get('/courses/health/:id', (req, res) => {
     const id = req.params.id;
-    Course_7.find({ course_id: id }, function (err, docs) {
+    Course_7.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Health_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get market courses Detail with use params
+// Get market courses Detail & Feedback with use params
 app.get('/courses/market/:id', (req, res) => {
     const id = req.params.id;
-    Course_8.find({ course_id: id }, function (err, docs) {
+    Course_8.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Mark_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get graphic courses Detail with use params
+// Get graphic courses Detail & Feedback with use params
 app.get('/courses/graphic/:id', (req, res) => {
     const id = req.params.id;
-    Course_9.find({ course_id: id }, function (err, docs) {
+    Course_9.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Graphic_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get music courses Detail with use params
+// Get music courses Detail & Feedback with use params
 app.get('/courses/music/:id', (req, res) => {
     const id = req.params.id;
-    Course_10.find({ course_id: id }, function (err, docs) {
+    Course_10.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Music_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get buisness courses Detail with use params
+// Get buisness courses Detail & Feedback with use params
 app.get('/courses/buisness/:id', (req, res) => {
     const id = req.params.id;
-    Course_11.find({ course_id: id }, function (err, docs) {
+    Course_11.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Buisness_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })
 
-// Get web courses Detail with use params
+// Get web courses Detail & Feedback with use params
 app.get('/courses/web/:id', (req, res) => {
     const id = req.params.id;
-    Course_12.find({ course_id: id }, function (err, docs) {
+    Course_12.find({ course_id: id }, function (err, course) {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(docs)
-            console.log("Suceesfull");
+            Web_Feed.find({ course_id: id }, (err, feedback) => {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+                    res.send({ course, feedback });
+                }
+            });
         }
     });
 })

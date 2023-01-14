@@ -15,7 +15,10 @@ function HistoryCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail History' />
-            <HistoryCourseInfo/>
+            <HistoryCourseInfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

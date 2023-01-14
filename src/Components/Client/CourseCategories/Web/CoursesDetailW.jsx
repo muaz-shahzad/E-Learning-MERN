@@ -15,7 +15,10 @@ function CourseDetailW({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail UI' />
-            <CourseinfoW/>
+            <CourseinfoW
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

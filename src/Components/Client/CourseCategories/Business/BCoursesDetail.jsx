@@ -15,7 +15,10 @@ function BCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail Buisness' />
-            <BCourseInfo/>
+            <BCourseInfo 
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

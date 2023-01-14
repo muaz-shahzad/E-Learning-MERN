@@ -15,7 +15,10 @@ function SecurCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail Secure' />
-            <SecurCourseInfo/>
+            <SecurCourseInfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )

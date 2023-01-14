@@ -15,7 +15,10 @@ function MusicCoursesDetail({ setLoginUser, Username }) {
             />
             <Header />
             <Back title='Courses Detail Music' />
-            <MusicCourseInfo/>
+            <MusicCourseInfo
+                 fusername={Username}
+
+            />
             <Footer />
         </>
     )
