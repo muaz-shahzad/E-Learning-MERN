@@ -51,7 +51,7 @@ const MarkCourseInfo = ({ fusername,rollno }) => {
         setIsDownloading(true);
         try {
             // File path on local machine
-            const filePath = "C:\Users\M Muaz Shahzad\Downloads\\northwind_mdf.zip";
+            const filePath = "C:\Users\M Muaz Shahzad\Downloads\\Course_File.zip";
             // Create a blob from file path
             const blob = new Blob([filePath], { type: 'application/zip' });
             // Create a URL from the blob

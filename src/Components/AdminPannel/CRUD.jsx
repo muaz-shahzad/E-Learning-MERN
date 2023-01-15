@@ -10,15 +10,6 @@ const CRUD = () => {
     const addcourse = () => {
         navigate("/homeadmin/Addcourse")
     }
-    const updtcourse = () => {
-        navigate("/updtcourse")
-
-
-    }
-    const dltcourse = () => {
-        alert("dlte horaha")
-
-    }
     return (
         <>
             <div className="container">
@@ -40,7 +31,7 @@ const CRUD = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-5">
+                    {/* <div className="col-lg-5">
                         <div className="card">
                             <div className="card-body p-3">
                                 <div className="row">
@@ -56,7 +47,7 @@ const CRUD = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>

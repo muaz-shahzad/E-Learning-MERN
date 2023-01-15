@@ -1,9 +1,27 @@
 import React from 'react'
 import "../UserProfile/Userprofile.css"
 import img1 from "../../assests/images/about-us.png"
+import { useEffect } from "react";
+import axios from 'axios';
+import { useState } from 'react';
 
 
-function Userprofile({setUser1, Username,Email,UserID,rollNo }) {
+function Userprofile({ setUser1, Username, Email, rollNo }) {
+
+
+    const [UserProfile, set_UserProfile] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:9002/profile")
+            .then(response => {
+                const extractedUsers = response.data;
+                set_UserProfile(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+    console.log("Users Info ", UserProfile)
     return (
         <>
             <div className="student-profile py-4">
@@ -41,11 +59,6 @@ function Userprofile({setUser1, Username,Email,UserID,rollNo }) {
                                             <td>2024</td>
                                         </tr>
                                         <tr>
-                                            <th width="30%">Gender</th>
-                                            <td width="2%">:</td>
-                                            <td>Male</td>
-                                        </tr>
-                                        <tr>
                                             <th width="30%">Email</th>
                                             <td width="2%">:</td>
                                             <td>{Email}</td>
@@ -54,25 +67,30 @@ function Userprofile({setUser1, Username,Email,UserID,rollNo }) {
                                 </div>
                             </div>
                             <div style={{ height: "26px" }} ></div>
-                            <div className='container-fluid card '>
-
+                            <div className='container-fluid '>
                                 <div className='row'>
-                                    <div className="card-header bg-transparent border-0" >
-                                        <h3 className="mb-0"><i className="far fa-clone"></i> Course Information</h3>
-                                    </div>
-                                    <div className='col-lg-3'>
-                                        <div className="" >
-                                            <img style={{ borderRadius: "15px" }} className='img-fluid' src={img1} alt="" />
-                                        </div>
-                                    </div>
-                                    <div className='col-lg-8'>
-                                        <div className="">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                        </div>
-                                    </div>
+                                    {
+                                        UserProfile.map((val, key) => {
+                                            return <div className='col-lg-6'>
+                                                <div className="card-header card border-0 mt-3" >
+                                                    <h5 className="mb-0">{val.category_name} Category</h5>
+                                                    <ol className='mt-3' style={{ fontWeight: "600" }}>
+                                                        <li>
+                                                            {val.course_name}
+                                                        </li>
+                                                    </ol>
+                                                </div>
+                                            </div>
+
+
+                                        })
+                                    }
                                 </div>
                             </div>
+
+
                         </div>
+
                     </div>
                 </div>
             </div>

@@ -2,12 +2,25 @@ import React from 'react'
 // import { Totalcourse } from "../../dummydata"
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import axios from 'axios';
 
 
 const UIinfo = (props) => {
     console.log("C_1 => ", props.course1Data)
     // console.log("C_1 image => ", props.course1Data[0].course_img)
+    const dltecourse = (id, id1) => {
+        console.log("ID > ", id)
+        console.log("Cat_id > ", id1)
 
+        axios.delete(`http://localhost:9002/uidlte/${id}`)
+            .then(response => {
+               alert("Course Deleted")
+            })
+            .catch(error => {
+                // Handle error
+            });
+
+    }
 
     return (
         <>
@@ -60,7 +73,7 @@ const UIinfo = (props) => {
                                                     </td>
                                                     <td className="align-middle text-sm">
                                                         <div className="col text-center">
-                                                            <h6 className="text-sm mb-0"><DeleteIcon style={{ color: "red" }} /></h6>
+                                                            <h6 className="text-sm mb-0"><DeleteIcon onClick={() => dltecourse(val.course_id, val.category_id)} style={{ color: "red",coursor: "pointer" }} /></h6>
                                                         </div>
                                                     </td>
                                                     {/* <img  className='img-fluid' alt='not image' src={`http://localhost:9002/${val.course_img}`} /> */}

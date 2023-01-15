@@ -1,13 +1,28 @@
 import React from 'react'
 // import { Totalcourse } from "../../dummydata"
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
 
 
 
 const Securityinfo = (props) => {
+
+    const dltecourse = (id, id1) => {
+        console.log("ID > ", id)
+        console.log("Cat_id > ", id1)
+
+        axios.delete(`http://localhost:9002/infodlte/${id}`)
+            .then(response => {
+                alert("Course Deleted")
+            })
+            .catch(error => {
+                // Handle error
+            });
+
+    }
     return (
         <>
-        
+
             <div className="container" style={{ display: "flex", justifyContent: "center", margin: "auto" }}>
                 <div className="row mt-4">
                     <div className="col-lg-12  mb-lg-0 mb-4">
@@ -20,7 +35,7 @@ const Securityinfo = (props) => {
                             <div className="table-responsive">
                                 <table className="table align-items-center ">
                                     <thead style={{ color: "#34477F" }}>
-                                    <tr>
+                                        <tr>
                                             <th scope="col">Category-Id</th>
                                             <th scope="col">Course-Id</th>
                                             <th scope="col">Course-name</th>
@@ -29,7 +44,7 @@ const Securityinfo = (props) => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {
+                                        {
                                             props.course6Data.map((val, key) => {
                                                 return <tr>
                                                     <td className="w-30">
@@ -56,7 +71,7 @@ const Securityinfo = (props) => {
                                                     </td>
                                                     <td className="align-middle text-sm">
                                                         <div className="col text-center">
-                                                            <h6 className="text-sm mb-0"><DeleteIcon style={{ color: "red" }} /></h6>
+                                                            <h6 className="text-sm mb-0"><DeleteIcon onClick={() => dltecourse(val.course_id, val.category_id)} style={{ color: "red", coursor: "pointer" }} /></h6>
                                                         </div>
                                                     </td>
                                                 </tr>

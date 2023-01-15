@@ -1,10 +1,24 @@
 import React from 'react'
 // import { Totalcourse } from "../../dummydata"
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
 
 
 
 const Healthinfo = (props) => {
+    const dltecourse = (id, id1) => {
+        console.log("ID > ", id)
+        console.log("Cat_id > ", id1)
+
+        axios.delete(`http://localhost:9002/healthdlte/${id}`)
+            .then(response => {
+               alert("Course Deleted")
+            })
+            .catch(error => {
+                // Handle error
+            });
+
+    }
     return (
         <>
         
@@ -55,8 +69,8 @@ const Healthinfo = (props) => {
                                                         </div>
                                                     </td>
                                                     <td className="align-middle text-sm">
-                                                        <div className="col text-center">
-                                                            <h6 className="text-sm mb-0"><DeleteIcon style={{ color: "red" }} /></h6>
+                                                    <div className="col text-center">
+                                                            <h6 className="text-sm mb-0"><DeleteIcon onClick={() => dltecourse(val.course_id, val.category_id)} style={{ color: "red",coursor: "pointer" }} /></h6>
                                                         </div>
                                                     </td>
                                                 </tr>

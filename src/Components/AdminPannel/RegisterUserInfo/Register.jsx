@@ -24,6 +24,18 @@ const Register = () => {
             });
     }, []);
     console.log(Registeruser)
+
+    const dltecourse = (id) => {
+        console.log("ID > ", id)
+        axios.delete(`http://localhost:9002/userdlte/${id}`)
+            .then(response => {
+               alert("User Deleted...!!!")
+            })
+            .catch(error => {
+                // Handle error
+            });
+
+    }
     return (
         <>
             <div className="min-height-500 bg-primary position-absolute mb-5 w-100"></div>
@@ -63,9 +75,9 @@ const Register = () => {
                                                                 </div>
                                                             </td>
                                                             <td className="align-middle">
-                                                                <div className="col ms-4">
-                                                                    <h6 className="text-sm mb-0"> <DeleteIcon style={{ color: "red" }} /></h6>
-                                                                </div>
+                                                            <div className="col text-center">
+                                                            <h6 className="text-sm mb-0"><DeleteIcon onClick={() => dltecourse(val.roll)} style={{ color: "red",coursor: "pointer" }} /></h6>
+                                                        </div>
                                                             </td>
                                                         </tr>
                                                     })
