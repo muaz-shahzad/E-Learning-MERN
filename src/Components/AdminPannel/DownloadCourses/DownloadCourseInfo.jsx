@@ -1,24 +1,36 @@
 import React from 'react'
-import DeleteIcon from '@mui/icons-material/Delete';
 import Adminnav from '../Adminnav';
 import { useEffect } from "react";
-import axios from 'axios';
 import { useState } from 'react';
 import { Downloadcourse } from '../../../dummydata';
+import axios from 'axios';
+
 
 
 const DownloadCourseInfo = () => {
 
+    const [Downloadcourses, set_Downloadcourses] = useState([]);
 
+    useEffect(() => {
+        axios.get(`http://localhost:9002/homeadmin/downloadusers`)
+            .then(response => {
+                const extractedUsers = response.data;
+                set_Downloadcourses(extractedUsers);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }, []);
+    console.log("Download",Downloadcourses)
 
     return (
         <>
             <div className="min-height-500 bg-primary position-absolute mb-5 w-100"></div>
             <main className="main-content position-relative border-radius-lg mb-5">
                 <Adminnav />
-                <div className="container" style={{ display: "flex", justifyContent: "center", margin: "auto" }}>
+                <div className="container">
                     <div className="row mt-4">
-                        <div className="col-lg-12  mb-lg-0 mb-4">
+                        <div className="col-lg-12 mb-lg-0 mb-4">
                             <div className="card ">
                                 <div className="card-header pb-0 p-3">
                                     <div className="d-flex justify-content-between">
@@ -34,49 +46,37 @@ const DownloadCourseInfo = () => {
                                                 <th scope="col">User-name</th>
                                                 <th scope="col">Course-name</th>
                                                 <th scope="col">Category</th>
-                                                <th scope="col">Feedback</th>
-                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {
-                                                Downloadcourse.map((val, key) => {
+                                                Downloadcourses.map((val, key) => {
                                                     return <tr>
-                                                        <td className="w-30">
+                                                        <td className="w-10">
                                                             <div className="d-flex px-2 py-1 align-items-center">
                                                                 <div className="ms-5">
-                                                                    <h6 className="text-sm mb-0">{val.courseid}</h6>
+                                                                    <h6 className="text-sm mb-0">{val.course_id}</h6>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="text-center">
-                                                                <h6 className="text-sm mb-0">{val.userid}</h6>
+                                                            <div className="w-45 text-center">
+                                                                <h6 className="text-sm mb-0">{val.user_id}</h6>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div className="text-center">
-                                                                <h6 className="text-sm mb-0">{val.username}</h6>
+                                                            <div className="">
+                                                                <h6 className="text-sm mb-0">{val.user_name}</h6>
                                                             </div>
                                                         </td>
-                                                        <td className="align-middle text-sm">
-                                                            <div className="col text-center">
-                                                                <h6 className="text-sm mb-0">{val.coursename}</h6>
+                                                        <td className="text-sm">
+                                                            <div className="col ms-3">
+                                                                <h6 className="text-sm mb-0">{val.course_name}</h6>
                                                             </div>
                                                         </td>
-                                                        <td className="align-middle text-sm">
-                                                            <div className="col text-center">
-                                                                <h6 className="text-sm mb-0">{val.category}</h6>
-                                                            </div>
-                                                        </td>
-                                                        <td className="align-middle text-sm">
-                                                            <div className="col text-center">
-                                                                <h6 className="text-sm mb-0">{val.Feedback}</h6>
-                                                            </div>
-                                                        </td>
-                                                        <td className="align-middle text-sm">
-                                                            <div className="col text-center">
-                                                                <h6 className="text-sm mb-0">{val.Action}</h6>
+                                                        <td className="text-sm">
+                                                            <div className="col ms-3">
+                                                                <h6 className="text-sm mb-0">{val.category_name}</h6>
                                                             </div>
                                                         </td>
                                                     </tr>

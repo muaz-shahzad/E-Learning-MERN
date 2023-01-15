@@ -15,19 +15,16 @@ const UserDownloadInfo = (props) => {
     const [Usersinfo, set_Usersinfo] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:9002/homeadmin/usersinfo`)
+        axios.get("http://localhost:9002/homeadmin/usersinfo")
             .then(response => {
-                const [{ roll, name }] = response.data;
-                // console.log(roll); // will print "1"
-                // console.log(name); // will print "M Muaz Shahzad"
-                const extractedUsers = response.data.map(({ roll, name }) => ({ roll, name }));
+                const extractedUsers = response.data.data;
                 set_Usersinfo(extractedUsers);
             })
             .catch(error => {
                 console.log(error);
             });
     }, []);
-
+   console.log("Users Info " , Usersinfo)
     return (
         <>
             <div className="min-height-500 bg-primary position-absolute mb-5 w-100"></div>
@@ -58,17 +55,17 @@ const UserDownloadInfo = (props) => {
                                                         return <tr>
                                                             <td>
                                                                 <div className="text-center">
-                                                                    <h6 className="text-sm mb-0">{val.roll}</h6>
+                                                                    <h6 className="text-sm mb-0">{val._id}</h6>
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div className="text-center">
-                                                                    <h6 className="text-sm mb-0">{val.name}</h6>
+                                                                    <h6 className="text-sm mb-0">{val.user_name}</h6>
                                                                 </div>
                                                             </td>
                                                             <td className="align-middle text-sm">
                                                                 <div className="col text-center">
-                                                                    <h6 className="text-sm mb-0">{val.Totalcourse}</h6>
+                                                                    <h6 className="text-sm mb-0">{val.downloads}</h6>
                                                                 </div>
                                                             </td>
                                                         </tr>

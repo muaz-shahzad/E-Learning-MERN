@@ -18,6 +18,14 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
 
 
     const [Registeruser, set_Registeruser] = useState([]);
+    const [Total_COURSE, set_Total_COURSE] = useState("");
+    const [Total_USER, set_Total_USER] = useState("");
+    const [Total_Download, set_Total_Download] = useState("");
+
+
+
+
+
     const navigate = useNavigate();
     const coursesInfo = () => {
         navigate("/homeadmin/coursesinfo")
@@ -26,34 +34,59 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
     const Registerusers = () => {
         navigate("/homeadmin/registeruser")
     }
-    
+
     const usersinfo = () => {
         navigate("/homeadmin/usersinfo")
     }
-    
+
     const downloadusers = () => {
         navigate("/homeadmin/downloadusers")
     }
     useEffect(() => {
         axios.get(`http://localhost:9002/homeadmin`)
             .then(response => {
-                const [{ roll, name }] = response.data;
-                // console.log(roll); // will print "1"
-                // console.log(name); // will print "M Muaz Shahzad"
+                // const [{ roll, name }] = response.data;
                 const extractedUsers = response.data.map(({ roll, name }) => ({ roll, name }));
                 set_Registeruser(extractedUsers);
             })
             .catch(error => {
                 console.log(error);
             });
+
+        axios.get("http://localhost:9002/homeadminss")
+            .then(response => {
+                const totalCourses = response.data
+                set_Total_COURSE(totalCourses)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        axios.get("http://localhost:9002/homeusers")
+            .then(response => {
+                const totaluser = response.data
+                set_Total_USER(totaluser)
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        axios.get("http://localhost:9002/homedownloadtotal")
+            .then(response => {
+                const totaldownload = response.data
+                set_Total_Download(totaldownload)
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }, []);
+    console.log("Total Course ", Total_COURSE.totalCourses)
+
 
 
 
 
     return (
-
-
         <>
             <div className="min-height-300 bg-primary position-absolute w-100"></div>
             <main className="main-content position-relative border-radius-lg ">
@@ -70,8 +103,8 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                                         <div className="col-8">
                                             <div className="numbers">
                                                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Courses</p>
-                                                <h5 className="font-weight-bolder mt-2">
-                                                    $53
+                                                <h5 className="ms-1 mt-2">
+                                                    {Total_COURSE.totalCourses}
                                                 </h5>
                                                 <p className="mb-0">
                                                     <span className="text-success text-sm font-weight-bolder">+55%</span>
@@ -93,9 +126,9 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                                         <div className="col-8">
                                             <div className="numbers">
                                                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Users</p>
-                                                <h5 className="font-weight-bolder mt-2">
-                                                    2,300
-                                                </h5>
+                                                <h5 className="ms-1 mt-2">
+                                                    {Total_USER.totalUsers}
+                                                  </h5>
                                                 <p className="mb-0">
                                                     <span className="text-success text-sm font-weight-bolder">+3%</span>
                                                     since last week
@@ -116,8 +149,8 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                                         <div className="col-8">
                                             <div className="numbers">
                                                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Downloads</p>
-                                                <h5 className="font-weight-bolder mt-2">
-                                                    +3,462
+                                                <h5 className="ms-1 mt-2">
+                                                    {Total_Download.totaldownload}
                                                 </h5>
                                                 <p className="mb-0">
                                                     <span className="text-success text-sm font-weight-bolder">+2%</span>
@@ -139,8 +172,8 @@ const Adminpage = ({ setadmin1, adminName, adminEmail, adminid }) => {
                                         <div className="col-8">
                                             <div className="numbers">
                                                 <p className="text-sm mb-0 text-uppercase font-weight-bold">Total Categories</p>
-                                                <h5 className="font-weight-bolder mt-2">
-                                                    $103,430
+                                                <h5 className="ms-1 mt-2">
+                                                    12
                                                 </h5>
                                                 <p className="mb-0">
                                                     <span className="text-success text-sm font-weight-bolder">+5%</span> than last month
