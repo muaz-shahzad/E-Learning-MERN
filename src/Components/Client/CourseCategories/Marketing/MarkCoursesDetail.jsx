@@ -6,7 +6,7 @@ import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import MarkCourseInfo from './MarkCourseInfo'
 
-function MarkCoursesDetail({ setLoginUser, Username }) {
+function MarkCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -17,7 +17,7 @@ function MarkCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Marketing' />
             <MarkCourseInfo
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>

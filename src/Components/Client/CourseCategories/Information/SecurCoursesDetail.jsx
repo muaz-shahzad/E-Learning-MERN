@@ -6,7 +6,7 @@ import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import SecurCourseInfo from './SecurCourseInfo'
 
-function SecurCoursesDetail({ setLoginUser, Username }) {
+function SecurCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -17,7 +17,7 @@ function SecurCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Secure' />
             <SecurCourseInfo
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>

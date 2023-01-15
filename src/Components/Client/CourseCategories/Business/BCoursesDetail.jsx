@@ -6,7 +6,7 @@ import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import BCourseInfo from './BCourseInfo'
 
-function BCoursesDetail({ setLoginUser, Username }) {
+function BCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -17,7 +17,7 @@ function BCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Buisness' />
             <BCourseInfo 
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>

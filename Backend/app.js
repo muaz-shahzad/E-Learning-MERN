@@ -3,6 +3,8 @@ import cors from "cors"
 import mongoose from "mongoose"
 import bodyParser from "body-parser";
 import multer from "multer";
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
 
 
 const app = express()
@@ -11,6 +13,14 @@ app.use(express.urlencoded())
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cookieParser());
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+}));
+
 
 //storage
 app.use('/uploads', express.static('uploads'))
@@ -81,7 +91,6 @@ const adminSchema = new mongoose.Schema({
 const Admin = new mongoose.model("Admin", adminSchema)
 
 // User Login Post
-
 app.post("/login", (req, res) => {
     const { email, password } = req.body
     User.findOne({ email: email }, (err, user) => {
@@ -98,25 +107,7 @@ app.post("/login", (req, res) => {
 })
 
 
-
-
-// User login get Api
-
-app.get("/login", (req, res) => {
-    const { email } = req.body;
-    User.findOne({ email: email }, (err, User) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send({ message: "An error occurred while trying to find the user." });
-        } else if (User) {
-            res.send({ message: "User Info", User });
-        } else {
-            res.status(404).send({ message: "User not found" });
-        }
-    });
-});
-
-
+///////////////////////////////////////
 // User Registration Post
 
 app.post("/register", (req, res) => {
@@ -700,6 +691,22 @@ const Web_Feedback = new mongoose.Schema({
 
 })
 const Web_Feed = new mongoose.model("Web_Feed", Web_Feedback)
+
+//================================================
+//Download Courses Information
+const Download_Courses = new mongoose.Schema({
+    course_id: Number, 
+    user_id: Number, //user table 
+    user_name: String, //user table
+    course_name: String, //course table
+    category_name: String //course table
+
+})
+const Downloadcourses = new mongoose.model("Downloadcourses", Download_Courses)
+
+
+
+
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
@@ -1421,8 +1428,37 @@ app.post("/courses/web/:id", (req, res) => {
         }
     });
 })
+
+
+///////////////////////////////////////////////
+//Post Request for download table
+app.post("/homeadmin/downloadusers", (req, res) => {
+    const { category_name, course_id, course_name, fusername, rollno } = req.body;
+    const download_course = new Downloadcourses({
+        course_id: course_id, //course table url say id mil jay gi 
+        user_id:  rollno, //user table 
+        user_name: fusername, //user table
+        course_name: course_name, //course table
+        category_name:  category_name, //course table
+
+    });
+    download_course.save((err) => {
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            // console.log(req.body)
+            res.send({ message: "Course Downloaded" });
+        }
+    });
+})
+
+
+
+
+
+
+
 //.-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------------------------------------------
 ////////////////////////////////////////////////////////////////////////////////////////
 // Get APIs FOR COURSES 
 ////////////////////////////////////////////////////////////////////////////////////////

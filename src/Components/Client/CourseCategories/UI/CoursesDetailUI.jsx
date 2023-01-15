@@ -10,7 +10,7 @@ import CourseInfo from './CourseInfo'
 // import img1 from "../../../../assests/images/kids-learning.png"
 
 
-function CoursesDetailUI({ setLoginUser, Username }) {
+function CoursesDetailUI({ setLoginUser, Username, rollno }) {
 
     return (
         <>
@@ -22,6 +22,7 @@ function CoursesDetailUI({ setLoginUser, Username }) {
             <Back title='Courses Detail UI' />
             <CourseInfo
                  fusername={Username}
+                 rollno={rollno}
             />
             <Footer />
         </>

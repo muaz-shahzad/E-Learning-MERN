@@ -3,7 +3,7 @@ import Userprofile from '../UserProfile/Userprofile'
 import { useState } from 'react'
 
 
-const UserPage = ({ setLoginUser, Username,Email,userid }) => {
+const UserPage = ({ setLoginUser, Username,Email,userid,rollno }) => {
 
   return (
     <>
@@ -11,7 +11,7 @@ const UserPage = ({ setLoginUser, Username,Email,userid }) => {
         setUser1={setLoginUser}
         Username={Username}
         Email={Email}
-        UserID={userid}
+        rollNo={rollno}
       />
     </>
   )

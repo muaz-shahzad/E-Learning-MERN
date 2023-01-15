@@ -7,7 +7,7 @@ import '../UI/UI.css'
 import GUICourseCard from './GUICourseCard'
 import GCourseInfo from './GCourseInfo'
 
-function GCoursesDetail({ setLoginUser, Username }) {
+function GCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -18,6 +18,7 @@ function GCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail GUI' />
             <GCourseInfo
                  fusername={Username}
+                 rollno={rollno}
 
             />
             <Footer />

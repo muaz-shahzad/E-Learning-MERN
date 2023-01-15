@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const ArtCourseInfo = ({ fusername }) => {
+const ArtCourseInfo = ({ fusername,rollno }) => {
     const { id } = useParams();
     console.log("Detail prams id", id)
 
@@ -13,6 +13,8 @@ const ArtCourseInfo = ({ fusername }) => {
 
     const [Artcoursedetail, set_artcoursedetail] = useState([]);
     const [ArtFeeback, set_ArtFeeback] = useState([]);
+    const [isDownloading, setIsDownloading] = useState(false);
+
 
     const [feedback, setFeedback] = useState('');
     function handleChange(event) {
@@ -43,9 +45,43 @@ const ArtCourseInfo = ({ fusername }) => {
         setFeedback('')
     }
 
+
+    const handleDownload = async () => {
+        setIsDownloading(true);
+        try {
+            // File path on local machine
+            const filePath = "C:\Users\M Muaz Shahzad\Downloads\\northwind_mdf.zip";
+            // Create a blob from file path
+            const blob = new Blob([filePath], { type: 'application/zip' });
+            // Create a URL from the blob
+            const url = URL.createObjectURL(blob);
+            // Create a link element
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = "Course.zip";
+            document.body.appendChild(link);
+            link.click();
+            setIsDownloading(false);
+            const course_id = Artcoursedetail[0].course_id;
+            const category_name = Artcoursedetail[0].category_name;
+            const course_name = Artcoursedetail[0].course_name;
+            const dataofdownload = { course_name, course_id, category_name, fusername, rollno };
+            console.log("Downlaod course Info =>", dataofdownload);
+            axios.post(`http://localhost:9002/homeadmin/downloadusers`, dataofdownload)
+                .then(res => {
+                    alert(res.data.message)
+                })
+
+
+
+        } catch (error) {
+            console.error(error);
+            setIsDownloading(false);
+        }
+    };
     return (
         <>
-          <div className="sg-section">
+            <div className="sg-section">
                 <div className="section-content course-details bg-white section-padding">
                     <div className="container">
                         <div className="row">
@@ -55,7 +91,7 @@ const ArtCourseInfo = ({ fusername }) => {
                                         return <div className="sa-course">
                                             <div className='col-lg-4'>
                                                 <div className="course-thumb">
-                                                    <img src={`http://localhost:9002/${val.course_img}`} alt="Image" className="w-100" style={{borderRadius: "14px 14px 14px 14px"}} />
+                                                    <img src={`http://localhost:9002/${val.course_img}`} alt="Image" className="w-100" style={{ borderRadius: "14px 14px 14px 14px" }} />
                                                 </div>
                                             </div>
                                             <div className="course-info" style={{ textAlign: "justify" }}>
@@ -105,7 +141,7 @@ const ArtCourseInfo = ({ fusername }) => {
                                                             </div>
                                                         </div>
                                                         <div className='text-end'>
-                                                            <button className='btn text-end'>Download</button>
+                                                            <button onClick={handleDownload} disabled={isDownloading} className='btn text-end'>Download</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -6,7 +6,7 @@ import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import MusicCourseInfo from './MusicCourseInfo'
 
-function MusicCoursesDetail({ setLoginUser, Username }) {
+function MusicCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -17,7 +17,7 @@ function MusicCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Music' />
             <MusicCourseInfo
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>

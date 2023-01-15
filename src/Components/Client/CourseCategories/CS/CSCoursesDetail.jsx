@@ -7,7 +7,7 @@ import '../UI/UI.css'
 
 import CSCourseInfo from './CSCourseInfo'
 
-function CSCoursesDetail({ setLoginUser, Username }) {
+function CSCoursesDetail({ setLoginUser, Username,rollno }) {
     return (
         <>
             <Head
@@ -18,6 +18,7 @@ function CSCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Computer' />
             <CSCourseInfo
                  fusername={Username}
+                 rollno={rollno}
 
             />
             <Footer />

@@ -6,7 +6,7 @@ import Footer from '../../Footer/Footer'
 import '../UI/UI.css'
 import ArtCourseInfo from './ArtCourseInfo'
 
-function ArtCoursesDetail({ setLoginUser, Username }) {
+function ArtCoursesDetail({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -17,6 +17,7 @@ function ArtCoursesDetail({ setLoginUser, Username }) {
             <Back title='Courses Detail Art' />
             <ArtCourseInfo
                 fusername={Username}
+                rollno={rollno}
             />
             <Footer />
         </>

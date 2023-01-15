@@ -12,6 +12,7 @@ import {
 
 } from "react-router-dom";
 import { useState } from 'react'
+import { useEffect } from 'react';
 import Admin from './Components/Admin/Admin';
 import HomeAdmin from './Components/HomeAdmin/HomeAdmin';
 import Header from './Components/Client/Header/Header';
@@ -75,25 +76,6 @@ import DownloadCourseInfo from './Components/AdminPannel/DownloadCourses/Downloa
 function App() {
   const [user, setLoginUser] = useState({})
   const [admin, setNewadmin] = useState({})
-
-  // const [state, updstate] = useState({
-  //   course_name: "",
-  //   course_id: "",
-
-  // })
-  // const getdata = (id) => {
-  //   axios.get(`http://localhost:9002/Addcourse/${id}`).then(function (response) {
-  //     // updstate({
-  //     //   // course_name: response.body.course_name,
-  //     //   course_id: response.body.course_id,
-  //     // })
-  //     // console.log(Json.strresponse.data+"asss");
-  //     console.log(JSON.stringify(response.data));
-  //   }).catch((e)=>{
-  //     console.log(e);
-  //   })
-
-  // }
   return (
     <>
 
@@ -119,7 +101,6 @@ function App() {
           <Route path="/login" element={<Login setLoginUser={setLoginUser} />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route
-
             path="/homeadmin"
             element={
               admin && admin._id ? (
@@ -180,6 +161,7 @@ function App() {
                 Username={user.name}
                 Email={user.email}
                 userid={user._id}
+                rollno={user.roll}
               />
             ) : (
               <Navigate replace to="/" />
@@ -207,6 +189,7 @@ function App() {
                   <CoursesDetailUI
                     setLoginUser={setLoginUser}
                     Username={user.name}
+                    rollno={user.roll}
 
                   />
                 ) : (
@@ -224,6 +207,7 @@ function App() {
                 <ArtCoursesDetail
                   setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
 
                 />
               ) : (
@@ -240,6 +224,7 @@ function App() {
                 <CSCoursesDetail
                   setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
 
                 />
               ) : (
@@ -254,6 +239,7 @@ function App() {
                 <HistoryCoursesDetail
                   setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -268,6 +254,7 @@ function App() {
                 <CourseDetailSE
                   setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -282,6 +269,7 @@ function App() {
                 <SecurCoursesDetail
                   setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -295,6 +283,7 @@ function App() {
               (
                 <HealthCoursesDetailUI setLoginUser={setLoginUser}
                   Username={user.name}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -310,6 +299,7 @@ function App() {
                   Username={user.name}
                   Email={user.email}
                   userid={user._id}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -324,6 +314,7 @@ function App() {
                 <GCoursesDetail Username={user.name}
                   Email={user.email}
                   userid={user._id}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -338,6 +329,7 @@ function App() {
                 <MusicCoursesDetail Username={user.name}
                   Email={user.email}
                   userid={user._id}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -352,6 +344,7 @@ function App() {
                 <BCoursesDetail Username={user.name}
                   Email={user.email}
                   userid={user._id}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />
@@ -367,6 +360,7 @@ function App() {
                 <CourseDetailW Username={user.name}
                   Email={user.email}
                   userid={user._id}
+                  rollno={user.roll}
                 />
               ) : (
                 <Navigate replace to="/" />

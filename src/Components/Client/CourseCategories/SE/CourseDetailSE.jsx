@@ -6,7 +6,7 @@ import Back from '../../../Back/Back'
 import Footer from '../../Footer/Footer'
 import "../UI/UI.css"
 
-function CourseDetailSE ({setLoginUser, Username }){
+function CourseDetailSE ({setLoginUser, Username, rollno  }){
     return (
         <>
             <Head
@@ -17,7 +17,7 @@ function CourseDetailSE ({setLoginUser, Username }){
             <Back title='Courses Detail SE' />
             <SEcourseinfo
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>

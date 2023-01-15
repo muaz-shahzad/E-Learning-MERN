@@ -3,7 +3,7 @@ import "../UserProfile/Userprofile.css"
 import img1 from "../../assests/images/about-us.png"
 
 
-function Userprofile({setUser1, Username,Email,UserID }) {
+function Userprofile({setUser1, Username,Email,UserID,rollNo }) {
     return (
         <>
             <div className="student-profile py-4">
@@ -33,7 +33,7 @@ function Userprofile({setUser1, Username,Email,UserID }) {
                                         <tr>
                                             <th width="30%">Roll</th>
                                             <td width="2%">:</td>
-                                            <td>{UserID}</td>
+                                            <td>{rollNo}</td>
                                         </tr>
                                         <tr>
                                             <th width="30%">Academic Year	</th>

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const GCourseInfo = ({ fusername }) => {
+const GCourseInfo = ({ fusername,rollno }) => {
     const { id } = useParams();
     console.log("Detail prams id", id)
 
@@ -14,6 +14,8 @@ const GCourseInfo = ({ fusername }) => {
 
     const [GUIcoursedetail, set_GUIcoursedetail] = useState([]);
     const [GUIFeeback, set_GUIFeeback] = useState([]);
+    const [isDownloading, setIsDownloading] = useState(false);
+
 
     const [feedback, setFeedback] = useState('');
     function handleChange(event) {
@@ -44,6 +46,40 @@ const GCourseInfo = ({ fusername }) => {
             })
         setFeedback('')
     }
+
+    const handleDownload = async () => {
+        setIsDownloading(true);
+        try {
+            // File path on local machine
+            const filePath = "C:\Users\M Muaz Shahzad\Downloads\\northwind_mdf.zip";
+            // Create a blob from file path
+            const blob = new Blob([filePath], { type: 'application/zip' });
+            // Create a URL from the blob
+            const url = URL.createObjectURL(blob);
+            // Create a link element
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = "Course.zip";
+            document.body.appendChild(link);
+            link.click();
+            setIsDownloading(false);
+            const course_id = GUIcoursedetail[0].course_id;
+            const category_name = GUIcoursedetail[0].category_name;
+            const course_name = GUIcoursedetail[0].course_name;
+            const dataofdownload = { course_name, course_id, category_name, fusername, rollno };
+            console.log("Downlaod course Info =>", dataofdownload);
+            axios.post(`http://localhost:9002/homeadmin/downloadusers`, dataofdownload)
+                .then(res => {
+                    alert(res.data.message)
+                })
+
+
+
+        } catch (error) {
+            console.error(error);
+            setIsDownloading(false);
+        }
+    };
     return (
         <>
 
@@ -107,7 +143,7 @@ const GCourseInfo = ({ fusername }) => {
                                                             </div>
                                                         </div>
                                                         <div className='text-end'>
-                                                            <button className='btn text-end'>Download</button>
+                                                            <button onClick={handleDownload} disabled={isDownloading} className='btn text-end'>Download</button>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -7,7 +7,7 @@ import '../UI/UI.css'
 import HealthCourseInfo from './HealthCourseInfo'
 
 
-function HealthCoursesDetailUI({ setLoginUser, Username }) {
+function HealthCoursesDetailUI({ setLoginUser, Username, rollno  }) {
     return (
         <>
             <Head
@@ -18,7 +18,7 @@ function HealthCoursesDetailUI({ setLoginUser, Username }) {
             <Back title='Courses Detail Health' />
             <HealthCourseInfo
                  fusername={Username}
-
+                 rollno={rollno}
             />
             <Footer />
         </>
