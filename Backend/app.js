@@ -90,12 +90,16 @@ const adminSchema = new mongoose.Schema({
 })
 const Admin = new mongoose.model("Admin", adminSchema)
 
+
+let logedInUsers;
 // User Login Post
 app.post("/login", (req, res) => {
     const { email, password } = req.body
     User.findOne({ email: email }, (err, user) => {
         if (user) {
             if (password === user.password) {
+                logedInUsers = user.roll
+                console.log("login User", logedInUsers)
                 res.send({ message: "Login Successfull", user: user })
             } else {
                 res.send({ message: "Password didn't match" })
@@ -1532,16 +1536,16 @@ app.get("/homeadmin/usersinfo", (req, res) => {
             }
         }
     ])
-    .exec((err, data) => {
-        if (err) {
-            res.status(500).json({
-                message: "Error in getting downloads per user",
-                error: err
-            });
-        } else {
-            res.status(200).json({ data });
-        }
-    });
+        .exec((err, data) => {
+            if (err) {
+                res.status(500).json({
+                    message: "Error in getting downloads per user",
+                    error: err
+                });
+            } else {
+                res.status(200).json({ data });
+            }
+        });
 });
 
 
@@ -1953,6 +1957,7 @@ app.get("/homeadmin/downloadusers", (req, res) => {
 
 //Get total courses here
 app.get('/homeadminss', (req, res) => {
+    let totalCourses = 0;
     let course1 = Course_1.aggregate([
         {
             $group: {
@@ -2155,12 +2160,265 @@ app.get('/Addcourse', (req, res) => {
     });
 })
 
+//Get user profile data for specific courses
+app.get('/profile', (req, res) => {
+    const userId = logedInUsers; // assuming you have the user's ID available through a logged in session
+    Downloadcourses.find({ user_id: userId }, (err, downloads) => {
+        if (err) {
+            res.status(500).json({ message: err.message });
+        } else {
+            res.json(downloads);
+        }
+    });
+});
 
+//-----------------------------------------------------------------------------
+//Delete for UI course
+app.delete('/uidlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
 
+    // Find and remove the user from the database
+    Course_1.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
 
+app.delete('/artdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
 
+    // Find and remove the user from the database
+    Course_2.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
 
+app.delete('/csdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
 
+    // Find and remove the user from the database
+    Course_3.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/historydlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_4.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+app.delete('/sedlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_5.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+app.delete('/infodlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_6.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/healthdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_7.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/markdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_8.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/graphicdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_9.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/musicdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_10.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+
+app.delete('/buisnessdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_11.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+app.delete('/webdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    Course_12.findOneAndDelete({ course_id: Id }, (err, course) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!course) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send();
+        }
+    });
+});
+//-=----------------------------------------------------------------------------
+
+//Dlte register user
+app.delete('/userdlte/:id', (req, res) => {
+    // Get the user ID from the URL parameters
+    const Id = req.params.id;
+
+    // Find and remove the user from the database
+    User.findOneAndDelete({ roll: Id }, (err, userss) => {
+        if (err) {
+            // If an error occurs, send a 500 status code
+            res.status(500).send(err);
+        } else if (!userss) {
+            // If the course is not found, send a 404 status code
+            res.status(404).send('Course not found');
+        } else {
+            // If the course is successfully deleted, send a 204 status code (no content)
+            res.status(204).send({ message: "User Deleted...!!!" })
+        }
+    });
+});
 app.listen(9002, () => {
     console.log("BE started at port 9002")
 })
