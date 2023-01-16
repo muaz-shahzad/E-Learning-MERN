@@ -3,7 +3,7 @@ import "./register.css"
 import { useState } from 'react'
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-
+import bcrypt from 'bcryptjs';
 import validator from "validator";
 
 
@@ -21,14 +21,14 @@ function Register() {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    if (name === 'name') {
-      if (validator.isAlphanumeric(value) && !validator.isNumeric(value)) {
-        setUser({ ...user, [name]: value });
-      } else {
+    if(name === 'name'){
+      if(validator.isAlphanumeric(value) && !validator.isNumeric(value)){
+        setUser({...user, [name]: value});
+      }else{
         alert("Numbers or special character not allowed in name field");
       }
-    } else {
-      setUser({ ...user, [name]: value });
+    }else{
+      setUser({...user, [name]: value});
     }
   }
 
@@ -42,18 +42,27 @@ function Register() {
 
     if (!validator.isEmail(email)) {
       alert("Please, enter valid Email!");
-    } else if (!validatePassword(password)) {
+    } else if(!validatePassword(password)){
       alert("Password should be combination of 5 digits special character one capital letter and number")
-    } else if (password !== reEnterPassword) {
+    }else if(password !== reEnterPassword){
       alert("Password and re-enter password should be same")
-    } else if (!name || !email || !password || !reEnterPassword) {
+    }else if(!name || !email || !password || !reEnterPassword){
       alert("Input Fields Must Be Filled");
-    } else {
-      axios.post("http://localhost:9002/register", user)
-        .then(res => {
-          alert(res.data.message)
-          navigate("/login")
-        })
+    }else{
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(password, salt, (err, hashedPassword) => {
+          if(err){
+            console.error(err);
+            return;
+          }
+          const data = {name, email, password: hashedPassword};
+          axios.post("http://localhost:9002/register", data)
+            .then(res => {
+              alert(res.data.message)
+              navigate("/login")
+            })
+        });
+      });
     }
   }
 
@@ -68,15 +77,15 @@ function Register() {
         </div>
         <div className="user-box">
           <input className='mb-1 ' type="text" name="email" placeholder='muazshahzad667@gmail.com' value={user.email} onChange={handleChange} required="" />
-          <label className='mt-1'>Your Email</label>
+          <label className='mt-3'>Your Email</label>
         </div>
         <div className="user-box">
           <input className='mb-1' type="password" name="password" placeholder='Muaz@123' value={user.password} onChange={handleChange} required="" />
-          <label className='mt-1'>Your Password</label>
+          <label className='mt-3'>Your Password</label>
         </div>
         <div className="user-box">
           <input className='mb-1' type="password" name="reEnterPassword" placeholder='Muaz@123' value={user.reEnterPassword} onChange={handleChange} required="" />
-          <label className='mt-1'>Re-enter Password</label>
+          <label className='mt-3'>Re-enter Password</label>
         </div>
 
         <div className="button-form button">
