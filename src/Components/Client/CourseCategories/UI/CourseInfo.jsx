@@ -116,7 +116,7 @@ const CourseInfo = ({ fusername, rollno }) => {
                                                     <div className="tab-content" id="myTabContent">
                                                         <div className="tab-pane fade show active mt-4" id="description" role="tabpanel" aria-labelledby="description-tab">
                                                             <h6 style={{ fontSize: "22px" }}>Course Details</h6>
-                                                            <p>{val.course_detail}</p>
+                                                            <p>{val.course_desc}</p>
                                                         </div>
                                                         <div className="tab-pane fade mt-4" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                                             <h6 style={{ fontSize: "22px" }} className="">Student Feedback</h6>

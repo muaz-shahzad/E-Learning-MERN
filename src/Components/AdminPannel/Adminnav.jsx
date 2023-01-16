@@ -61,7 +61,7 @@ const Adminnav = ({ setAdmin, Name, adminEmail, adminid }) => {
                                 >
                                     {/* <MenuItem onClick={() => navigate("/admin")}>Profile</MenuItem> */}
                                     <MenuItem>{Name}</MenuItem>
-                                    <MenuItem onClick={() => setAdmin({})}>Logout</MenuItem>
+                                    <MenuItem onClick={() => navigate('/admin')}>Logout</MenuItem>
                                 </Menu>
                             </ul>
                         </div>

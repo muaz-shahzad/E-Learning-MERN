@@ -80,7 +80,7 @@ const SoftwareForm = () => {
                                     <div className="col-md-5">
                                         <div className="form-group">
                                             <label htmlFor="example-text-input" className="form-control-label">Course Name</label>
-                                            <input value={formData.course_name} onChange={handleFormDataChange} name="course_name" className="form-control" type="text" maxLength={20} />
+                                            <input value={formData.course_name} onChange={handleFormDataChange} name="course_name" className="form-control" type="text" maxLength={200} />
                                         </div>
                                     </div>
                                     <div className="col-md-4">
@@ -100,13 +100,13 @@ const SoftwareForm = () => {
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="example-text-input" className="form-control-label">Course Description</label>
-                                            <textarea onChange={handleFormDataChange} value={formData.course_desc} className="form-control" name='course_desc' type="text" maxLength={50} />
+                                            <textarea onChange={handleFormDataChange} value={formData.course_desc} className="form-control" name='course_desc' type="text" maxLength={1000} />
                                         </div>
                                     </div>
                                     <div className="col-md-12">
                                         <div className="form-group">
                                             <label htmlFor="example-text-input" className="form-control-label">Course Detail</label>
-                                            <textarea onChange={handleFormDataChange} value={formData.course_detail} className="form-control" name='course_detail' type="text" maxLength={100} />
+                                            <textarea onChange={handleFormDataChange} value={formData.course_detail} className="form-control" name='course_detail' type="text" maxLength={1000} />
                                         </div>
                                     </div>
 
