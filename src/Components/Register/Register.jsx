@@ -11,72 +11,50 @@ import validator from "validator";
 function Register() {
   const navigate = useNavigate();
 
+
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
     reEnterPassword: ""
-  })
+  });
+
   const handleChange = e => {
-    const { name, value } = e.target
-    setUser({
-      ...user,
-      [name]: value
-    })
-
+    const { name, value } = e.target;
+    if (name === 'name') {
+      if (validator.isAlphanumeric(value) && !validator.isNumeric(value)) {
+        setUser({ ...user, [name]: value });
+      } else {
+        alert("Numbers or special character not allowed in name field");
+      }
+    } else {
+      setUser({ ...user, [name]: value });
+    }
   }
-  // 
+
+  const validatePassword = (password) => {
+    const pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{5,}$/;
+    return pattern.test(password);
+  }
+
   const register = () => {
-    const { name, email, password, reEnterPassword } = user
+    const { name, email, password, reEnterPassword } = user;
 
-    if (validator.isAlphanumeric(name)) {
-      // alert("Character nhi hayn")'
-    }
-    else {
-      // alert("Character hayn");
-      window.location.reload(false);
-      //Ye best h character nhi hnt chaiye
-     
-    }
-    // Perfect run kar rhi ye condition
-    if (!validator.isNumeric(name)) {
-      // alert("Perfect Name")
-
-    }
-    else {
-      // alert("Numeric hayn")
-      window.location.reload(false);
-      //Ye best h Numeric nhi hnt chaiye
-      
-    }
-    if (validator.isEmail(email) && !validator.isAlphanumeric(password)) {
-      // 
-      if (name && email && password && (password === reEnterPassword)) {
-        axios.post("http://localhost:9002/register", user)
-          .then(res => {
-            alert(res.data.message)
-            navigate("/login")
-          })
-        setUser({
-          name: "",
-          email: "",
-          password: "",
-          reEnterPassword: ""
+    if (!validator.isEmail(email)) {
+      alert("Please, enter valid Email!");
+    } else if (!validatePassword(password)) {
+      alert("Password should be combination of 5 digits special character one capital letter and number")
+    } else if (password !== reEnterPassword) {
+      alert("Password and re-enter password should be same")
+    } else if (!name || !email || !password || !reEnterPassword) {
+      alert("Input Fields Must Be Filled");
+    } else {
+      axios.post("http://localhost:9002/register", user)
+        .then(res => {
+          alert(res.data.message)
+          navigate("/login")
         })
-      }
-      else {
-        
-        alert("Input Fields Must Be Filled");
-      }
     }
-    else {
-      // alert("Please, enter valid Email! and name m character hay");
-
-    }
-    // 
-
-
-
   }
 
   return (
@@ -85,20 +63,20 @@ function Register() {
       <div className="register-box">
         <h2>SignUp</h2>
         <div className="user-box">
-          <input className='mb-1' type="text" name="name" placeholder='Muaz Shahzad' value={user.name} onChange={handleChange} required="" />
-          <label className='mt-2'>Your Name</label>
+          <input className='' type="text" name="name" placeholder='Muaz Shahzad' value={user.name} onChange={handleChange} required="" />
+          <label className='mt-1'>Your Name</label>
         </div>
         <div className="user-box">
           <input className='mb-1 ' type="text" name="email" placeholder='muazshahzad667@gmail.com' value={user.email} onChange={handleChange} required="" />
-          <label className='mt-2'>Your Email</label>
+          <label className='mt-1'>Your Email</label>
         </div>
         <div className="user-box">
           <input className='mb-1' type="password" name="password" placeholder='Muaz@123' value={user.password} onChange={handleChange} required="" />
-          <label className='mt-2'>Your Password</label>
+          <label className='mt-1'>Your Password</label>
         </div>
         <div className="user-box">
           <input className='mb-1' type="password" name="reEnterPassword" placeholder='Muaz@123' value={user.reEnterPassword} onChange={handleChange} required="" />
-          <label className='mt-2'>Re-enter Password</label>
+          <label className='mt-1'>Re-enter Password</label>
         </div>
 
         <div className="button-form button">

@@ -37,20 +37,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/E-Learn-API', {
 })
 
 
-//st0rage disk
-// var Storage = multer.diskStorage({
-//     destination: 'uploads',
-//     filename: (req, file, cb) => {
-//         cb(null, file.originalname);
-//     }
-// });
-//
-
-//Mutler
-// var upload = multer({
-//     storage: Storage
-// }).single('testImage');
-
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

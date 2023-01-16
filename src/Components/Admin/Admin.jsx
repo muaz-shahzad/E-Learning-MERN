@@ -49,12 +49,12 @@ function Admin({ setNewadmin }) {
             <div className="login-box">
                 <h2>Admin Login</h2>
                 <div className="user-box">
-                    <input className='mb-1' type="text" placeholder='muazshahzad667@gmail.com' name="email" value={admin.email} onChange={handleChange} required="" />
-                    <label className='mt-2'>Email</label>
+                    <input className='mt-2' type="text" placeholder='muazshahzad667@gmail.com' name="email" value={admin.email} onChange={handleChange} required="" />
+                    <label className='mt-3'>Email</label>
                 </div>
                 <div className="user-box">
-                    <input className='mb-1' type="password" placeholder='Muaz@123' name="password" value={admin.password} onChange={handleChange} required="" />
-                    <label className='mt-2'>Password</label>
+                    <input className='mt-5' type="password" placeholder='Muaz@123' name="password" value={admin.password} onChange={handleChange} required="" />
+                    <label className='mt-3'>Password</label>
                 </div>
                 <div className="button-form1 button">
                     <a id="submitadmin" href="#" onClick={Adminlogin}>

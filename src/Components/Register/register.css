@@ -25,8 +25,8 @@
         }
         
         .register-box h2 {
-            margin: 0 0 30px;
-            padding: 0;
+            /* margin: 0 0 30px; */
+            margin-bottom: 70px !important;
             color: #fff;
             text-align: center;
         }
@@ -34,10 +34,10 @@
         .register-box .user-box input {
             position: relative;
             width: 100%;
-            padding: 10px 0;
+            padding: 10px 3;
             font-size: 16px;
             color: #fff;
-            margin-bottom: 30px;
+            /* margin-bottom: 30px; */
             border: none;
             border-bottom: 1px solid #fff;
             outline: none;
@@ -59,20 +59,20 @@
         .register-box .user-box input:valid~label {
             top: -85px;
             left: 0;
-            color: #8F7CEC;
-            font-size: 12px;
+            /* color: #8F7CEC; */
+            font-size: 14px;
         }
         
         #submit {
             padding: 10px 20px;
-            color: #CBBDDB;
+            /* color: #CBBDDB; */
             font-size: 16px;
             text-decoration: none;
             text-transform: uppercase;
             overflow: hidden;
             transition: .5s;
             letter-spacing: 4px;
-            border: 1px solid #8F7CEC;
+            /* border: 1px solid #8F7CEC; */
             margin: auto;
         }
         
@@ -92,7 +92,7 @@
         #register {
             font-size: 14px;
             text-decoration: none;
-            color: #CBBDDB;
+            /* color: #CBBDDB; */
             margin: auto;
             width: 60%;
             text-align: center;
@@ -100,6 +100,6 @@
         
         #register a {
             margin: auto;
-            color: #8F7CEC;
+            /* color: #8F7CEC; */
             text-decoration: none;
         }

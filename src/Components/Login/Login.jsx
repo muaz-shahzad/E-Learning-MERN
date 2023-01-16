@@ -63,12 +63,13 @@ function Login({ setLoginUser }) {
             <div className="login-box">
                 <h2>Login</h2>
                 <div className="user-box">
-                    <input className="mb-1"  type="text" placeholder='muazshahzad667@gmail.com' name="email" value={user.email} onChange={handleChange} required="" />
-                    <label className="mt-2">Email</label>
+                    <input className=""  type="text" placeholder='muazshahzad667@gmail.com' name="email" value={user.email} onChange={handleChange} required="" />
+                    <label className="mt-4 mb-2">Email</label>
                 </div>
+                <br />
                 <div className="user-box">
-                    <input className="mb-1"  type="password" placeholder='Muaz@123' name="password" value={user.password} onChange={handleChange} required="" />
-                    <label className="mt-2">Password</label>
+                    <input className="mt-3"  type="password" placeholder='Muaz@123' name="password" value={user.password} onChange={handleChange} required="" />
+                    <label className="mt-4 mb-2">Password</label>
                 </div>
                 <div className="button-form button">
                     <a id="submit" href="#" onClick={login}>
