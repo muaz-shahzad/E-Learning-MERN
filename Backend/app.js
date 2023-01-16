@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import multer from "multer";
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
-
+import bcrypt from 'bcryptjs';
 
 const app = express()
 app.use(express.json())
@@ -58,6 +58,21 @@ const userSchema = new mongoose.Schema({
     password: String
 })
 
+// userSchema.pre('save', function (next) {
+//     const user = this;
+//     if (user.isModified('password')) {
+//         bcrypt.genSalt(10, function (err, salt) {
+//             bcrypt.hash(user.password, salt, function (err, hashedPassword) {
+//                 user.password = hashedPassword;
+//                 console.log(user.password)
+//                 next();
+//             });
+//         });
+//     } else {
+//         next();
+//     }
+// });
+
 const User = new mongoose.model("User", userSchema)
 
 // User Counter collection for increasing roll number
@@ -79,23 +94,40 @@ const Admin = new mongoose.model("Admin", adminSchema)
 
 let logedInUsers;
 // User Login Post
+// app.post("/login", (req, res) => {
+//     const { email, password } = req.body
+//     User.findOne({ email: email }, (err, user) => {
+//         if (user) {
+//             if (password === user.password) {
+//                 logedInUsers = user.roll
+//                 console.log("login User", logedInUsers)
+//                 res.send({ message: "Login Successfull", user: user })
+//             } else {
+//                 res.send({ message: "Password didn't match" })
+//             }
+//         } else {
+//             res.send({ message: "User not registered" })
+//         }
+//     })
+// })
 app.post("/login", (req, res) => {
-    const { email, password } = req.body
+    const { email, password } = req.body;
     User.findOne({ email: email }, (err, user) => {
         if (user) {
-            if (password === user.password) {
-                logedInUsers = user.roll
-                console.log("login User", logedInUsers)
-                res.send({ message: "Login Successfull", user: user })
-            } else {
-                res.send({ message: "Password didn't match" })
-            }
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if (isMatch) {
+                    logedInUsers = user.roll;
+                    console.log("login User", logedInUsers);
+                    res.send({ message: "Login Successfull", user });
+                } else {
+                    res.send({ message: "Password didn't match" });
+                }
+            });
         } else {
-            res.send({ message: "User not registered" })
+            res.send({ message: "User not registered" });
         }
-    })
-})
-
+    });
+});
 
 ///////////////////////////////////////
 // User Registration Post
